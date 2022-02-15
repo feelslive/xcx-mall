@@ -1,0 +1,100 @@
+.order{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.sign{
+  margin-top: 20rpx;
+  padding: 20rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-bottom: 2rpx solid #e8e8ed;
+  background: #fff;
+}
+.prolist_item{
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 6rpx 0;
+  margin-bottom: 20rpx;
+}
+.prolist_cover{
+  padding: 0 30rpx;
+  width: 480rpx;
+  height: 200rpx;
+  overflow: hidden;
+}
+.prolist_cover image{
+  width: 100%;
+  height: 100%;
+  border: 0 none;
+  vertical-align: top;
+}
+.prolist_info{
+  min-height: 200rpx;
+  box-sizing: border-box;
+  padding: 0 20rpx 16rpx 20rpx;
+  overflow: hidden;
+  border-bottom: 2rpx solid #e8e8ed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.prolist_title{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  height: 80rpx;
+  overflow: hidden;
+  margin-top: 16rpx;
+  color: #333;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.prolist_des{
+  display: flex;
+  justify-content: space-between;
+}
+.prolist_des .price{
+  color: #e93b3d;
+  font-size: 30rpx;
+}
+.prolist_des .total{
+  color: #aaa;
+  font-size: 28rpx;
+}
+.payment{
+  background: #fff;
+  padding: 20rpx;
+}
+.payment .payment_item{
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+.payment_item .price, .payment_total .price{
+  color: #e93b3d;
+}
+.payment_total{
+  border-top: 2rpx solid #e8e8ed;
+  text-align: right;
+  font-size: 32rpx;
+  padding: 20rpx 0;
+}
+.pay_btn{
+  background: #fff;
+  margin-top: 40rpx;
+  padding: 20rpx;
+}
+.pay_btn button{
+  border: none;
+  background: #1aad19;
+  color: #fff;
+  font-size: 32rpx;
+  padding: 10rpx 0;
+}

@@ -1,0 +1,36 @@
+<view class='order'>
+  <view class='sign'>JD京东自营</view>
+  <block wx:key="{{index}}" wx:for='{{accountInfo.shoppingList}}'>
+    <view class='prolist_item' data-index='{{index}}'>
+      <view class='prolist_cover'>
+        <image src='{{item.loopImgUrl[0]}}'></image>
+      </view>
+      <view class='prolist_info'>
+        <view class='prolist_title'>
+          <text>{{item.title}}</text>
+        </view>
+        <view class='prolist_des'>
+          <text class='price'>¥ {{item.price}}</text>
+          <text class='total'>x{{item.total}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class='payment'>
+    <view class='payment_item'>
+      <text>商品金额</text>
+      <text class='price'>¥{{accountInfo.totalMoney}}</text>
+    </view>
+    <view class='payment_item'>
+      <text>运费</text>
+      <text class='price'>¥0.00</text>
+    </view>
+    <view class='payment_total'>
+      实付金额：
+      <text class='price'>¥{{accountInfo.totalMoney}}</text>
+    </view>
+  </view>
+  <view class='pay_btn'>
+    <button bindtap='getOpenid'>微信支付</button>
+  </view>
+</view>
