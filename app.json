@@ -1,51 +1,54 @@
 {
-  "pages": [
-    "pages/home/index",
-    "pages/category/index",
-    "pages/cart/index",
-    "pages/me/index",
-    "pages/list/index",
-    "pages/detail/index",
-    "pages/order/index"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fbf9fe",
-    "navigationBarTitleText": "京东",
-    "navigationBarTextStyle": "black",
-    "backgroundColor": "#fbf9fe"
-  },
-  "tabBar": {
-    "color": "#959394",
-    "selectedColor": "#e93b3d",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/home/index",
-        "iconPath": "image/home.png",
-        "selectedIconPath": "image/home-hl.png",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/category/index",
-        "iconPath": "image/category.png",
-        "selectedIconPath": "image/category-hl.png",
-        "text": "分类"
-      },
-      {
-        "pagePath": "pages/cart/index",
-        "iconPath": "image/cart.png",
-        "selectedIconPath": "image/cart-hl.png",
-        "text": "购物车"
-      },
-      {
-        "pagePath": "pages/me/index",
-        "iconPath": "image/me.png",
-        "selectedIconPath": "image/me-hl.png",
-        "text": "我的"
-      }
-    ]
-  },
-  "sitemapLocation": "sitemap.json"
+    "pages": [
+        "pages/home/index",
+        "pages/category/index",
+        "pages/cart/index",
+        "pages/me/index",
+        "pages/list/index",
+        "pages/detail/index",
+        "pages/order/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fbf9fe",
+        "navigationBarTitleText": "京东",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#fbf9fe"
+    },
+    "usingComponents": {
+        "van-button": "@vant/weapp/button/index",
+        "van-search": "@vant/weapp/search/index"
+    },
+    "tabBar": {
+        "color": "#707070",
+        "selectedColor": "#72020a",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "list": [{
+                "pagePath": "pages/home/index",
+                "iconPath": "image/1.png",
+                "selectedIconPath": "image/1s.png",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/category/index",
+                "iconPath": "image/2.png",
+                "selectedIconPath": "image/2s.png",
+                "text": "分类"
+            },
+            {
+                "pagePath": "pages/cart/index",
+                "iconPath": "image/3.png",
+                "selectedIconPath": "image/3s.png",
+                "text": "购物车"
+            },
+            {
+                "pagePath": "pages/me/index",
+                "iconPath": "image/4.png",
+                "selectedIconPath": "image/4s.png",
+                "text": "我的"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json"
 }

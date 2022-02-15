@@ -1,0 +1,23 @@
+{
+  "name": "xcx-mall",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "@vant/weapp": "^1.10.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/feelslive/xcx-mall.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/feelslive/xcx-mall/issues"
+  },
+  "homepage": "https://github.com/feelslive/xcx-mall#readme"
+}
