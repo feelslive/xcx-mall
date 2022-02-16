@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "购物车",
   "usingComponents": {
-    "amount": "/components/amount/index"
+    "amount": "/components/amount/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index"
   }
 }

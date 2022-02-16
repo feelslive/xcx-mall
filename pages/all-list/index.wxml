@@ -1,0 +1,9 @@
+<view class='container'>
+  <!-- 搜索 -->
+  <van-sticky>
+    <van-search value="{{ value }}" input-align="center" placeholder="请输入搜索关键词" />
+  </van-sticky>
+  <view class="goods-panel">
+    <goodItem class="good-item" wx:for="{{goodList}}" wx:key="index" goodItem="{{item}}"></goodItem>
+  </view>
+</view>

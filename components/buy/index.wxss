@@ -33,7 +33,7 @@
   margin: 0;
   width: 100%;
 }
-.pop_btn button {
+.pop_btn .pop_btn_button {
   font-size: 32rpx;
   height: 100rpx;
   line-height: 100rpx;
@@ -55,7 +55,7 @@
   width: 30%;
   position: relative;
 }
-.buy_header .head_img image{
+.buy_header .head_img .head_img_image{
   position: absolute;
   left: 20rpx;
   top: -50rpx;

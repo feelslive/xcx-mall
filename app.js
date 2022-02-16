@@ -34,7 +34,6 @@ App({
     })
   },
   onShow: function() {
-    console.log('kkk')
   },
   globalData: {
     userInfo: null

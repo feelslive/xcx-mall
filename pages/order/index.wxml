@@ -1,6 +1,6 @@
 <view class='order'>
-  <view class='sign'>JD京东自营</view>
-  <block wx:key="{{index}}" wx:for='{{accountInfo.shoppingList}}'>
+  <view class='sign'>商品</view>
+  <block wx:key="index" wx:for='{{accountInfo.shoppingList}}'>
     <view class='prolist_item' data-index='{{index}}'>
       <view class='prolist_cover'>
         <image src='{{item.loopImgUrl[0]}}'></image>

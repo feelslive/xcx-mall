@@ -9,13 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    swipers: [{
-        image: "https://img01.yzcdn.cn/vant/apple-1.jpg"
-      },
-      {
-        image: "https://img01.yzcdn.cn/vant/apple-2.jpg"
-      }
-    ],
+    swipers: [],
     logos: [],
     quicks: [],
     pageRow: [],
@@ -30,70 +24,35 @@ Page({
       "title": "黑莓（BlackBerry）KEY2标准版 6GB+64GB双卡双待 4G全网通手机 黑色 移动联通电信手机",
       "price": "3388.00",
       "comment": "6239",
-      "rate": "99%",
-      "count": 1,
-      "total": 1,
-      "loopImgUrl": [
-        "/image/classify/miphone.png",
-        "/image/classify/phone.png",
-        "/image/classify/huawei.png"
-      ],
+      "rate": "99%"
     }, {
       "id": "5a4c8b8e4d8c22a97a94b46f58c1f3b9",
       "cover": "/image/classify/huawei.png",
       "title": "HUAWEI P20 Pro 全面屏徕卡三摄游戏手机 6GB+128GB 亮黑色 全网通移动联通电信4G手机 双卡双待",
       "price": "4499.00",
       "comment": "27万",
-      "rate": "99%",
-      "count": 1,
-      "total": 1,
-      "loopImgUrl": [
-        "/image/classify/miphone.png",
-        "/image/classify/phone.png",
-        "/image/classify/huawei.png"
-      ],
+      "rate": "99%"
     }, {
-      "id": "3a4c8b8e4d8c22a97a94b46f58c1f3b9",
       "cover": "/image/classify/phone.png",
       "title": "荣耀8X Max 7.12英寸90%屏占比珍珠屏 4GB+64GB 魅海蓝 移动联通电信4G全面屏手机 双卡双待",
       "price": "1499.00",
       "comment": "3万",
       "rate": "99%",
-      "count": 1,
-      "total": 1,
-      "loopImgUrl": [
-        "/image/classify/miphone.png",
-        "/image/classify/phone.png",
-        "/image/classify/huawei.png"
-      ],
+      "id": "3a4c8b8e4d8c22a97a94b46f58c1f3b9"
     }, {
       "id": "4a4c8b8e4d8c22a97a94b46f58c1f3b9",
       "cover": "/image/classify/miphone.png",
       "title": "黑莓（BlackBerry）KEY2标准版 6GB+64GB双卡双待 4G全网通手机 黑色 移动联通电信手机",
       "price": "3388.00",
       "comment": "6239",
-      "rate": "99%",
-      "count": 1,
-      "total": 1,
-      "loopImgUrl": [
-        "/image/classify/miphone.png",
-        "/image/classify/phone.png",
-        "/image/classify/huawei.png"
-      ],
+      "rate": "99%"
     }, {
       "id": "5a4c8b8e4d8c22a97a94b46f58c1f3b9",
       "cover": "/image/classify/huawei.png",
       "title": "HUAWEI P20 Pro 全面屏徕卡三摄游戏手机 6GB+128GB 亮黑色 全网通移动联通电信4G手机 双卡双待",
       "price": "4499.00",
       "comment": "27万",
-      "rate": "99%",
-      "count": 1,
-      "total": 1,
-      "loopImgUrl": [
-        "/image/classify/miphone.png",
-        "/image/classify/phone.png",
-        "/image/classify/huawei.png"
-      ],
+      "rate": "99%"
     }]
   },
 
@@ -112,7 +71,7 @@ Page({
       },
       success(res) {
         self.setData({
-          // swipers: res.data.swipers,
+          swipers: res.data.swipers,
           logos: res.data.logos,
           quicks: res.data.quicks,
           pageRow: res.data.pageRow

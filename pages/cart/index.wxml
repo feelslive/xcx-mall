@@ -4,8 +4,10 @@
     <text class='empyt_txt'>购物车空空如也，去逛逛吧~</text>
   </view>
   <view wx:else class='section'>
-    <block wx:key="{{index}}" wx:for='{{cartArray}}'>
-      <view class="good_list {{item.isTouchMove ? 'touch-move-active' : ''}}" bindtap='switchGoodDetail' data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+    <text wx:if="{{isEditing}}" bindtap="changeIsEditing" data-operation="complete">完成</text>
+    <text wx:else bindtap="changeIsEditing" data-operation="edit">编辑</text>
+    <block wx:key="index" wx:for='{{cartArray}}'>
+      <view class="good_list {{item.isTouchMove ? 'touch-move-active' : ''}}" bindtap='switchGoodDetail' data-index="{{index}}">
         <view class='content'>
           <view class='select_icon' catchtap='selectGood' data-index='{{index}}'>
             <image wx:if='{{item.select}}' src='/image/selected.png'></image>
@@ -21,7 +23,6 @@
                 <text class='price'>{{item.price}}</text>
                 <!-- 商品数量 -->
                 <amount count='{{item.total}}' data-index='{{index}}' bind:myevent="onGetCount" bind:subevent='subCount' bind:addevent='addCount'></amount>
-
               </view>
             </view>
           </view>
@@ -31,10 +32,31 @@
       </view>
     </block>
     <view class='fixBar'>
-      <view class='select_all' catchtap='selectAll'>
+      <van-submit-bar wx:if="{{!isEditing}}" custom-class="custom-submit-bar" disabled='{{totalCount < 1}}' button-text="提交订单" bind:submit="setAccount" safe-area-inset-bottom="{{false}}">
+        <view class='select_all' catchtap='selectAll'>
+          <image wx:if='{{selectAll}}' class='icon' src='/image/selected.png'></image>
+          <image wx:else class='icon' src='/image/unselect.png'></image>
+          <text>全选</text>
+        </view>
+        <view class='total'>
+          <text>合计:</text>
+          <text class='money'>¥{{totalMoney}}</text>
+        </view>
+      </van-submit-bar>
+      <van-submit-bar wx:else custom-class="custom-submit-bar" disabled='{{totalCount < 1}}' button-text="删除" bind:submit="delAccount" safe-area-inset-bottom="{{false}}">
+        <view class='select_all' catchtap='selectAll'>
+          <image wx:if='{{selectAll}}' class='icon' src='/image/selected.png'></image>
+          <image wx:else class='icon' src='/image/unselect.png'></image>
+          <text>全选</text>
+        </view>
+        <view class='total'>
+          <!-- <text>合计:</text> -->
+          <!-- <text class='money'>¥{{totalMoney}}</text> -->
+        </view>
+      </van-submit-bar>
+      <!-- <view class='select_all' catchtap='selectAll'>
         <image wx:if='{{selectAll}}' class='icon' src='/image/selected.png'></image>
         <image wx:else class='icon' src='/image/unselect.png'></image>
-
         <text>全选</text>
       </view>
       <view class='total'>
@@ -42,9 +64,11 @@
         <text class='money'>¥{{totalMoney}}</text>
       </view>
       <view class='btn_amount'>
-        <button bindtap='setAccount' disabled='{{totalCount < 1}}'>去结算({{totalCount}})</button>
-      </view>
+        <!-- <button bindtap='setAccount' disabled='{{totalCount < 1}}'>去结算({{totalCount}})</button> -->
+      <!-- <van-button bindtap='setAccount' round type="info" disabled='{{totalCount < 1}}' color="#000">
+          去结算
+        </van-button>
+      </view> -->
     </view>
-
   </view>
 </view>

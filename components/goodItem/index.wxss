@@ -1,0 +1,49 @@
+/* components/goodItem/index.wxss */
+.img-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 336rpx;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  background: #fff;
+  box-sizing: border-box;
+  /* overflow: hidden; */
+}
+
+.good-img {
+  width: 100%;
+  height: 240rpx;
+}
+
+.img-wrap .good-image {
+  width: 100%;
+  height: 100%;
+  background: #d8d8d8;
+}
+
+.good-title {
+  width: 300rpx;
+  color: #707070;
+  margin-top: 12rpx;
+}
+
+.good-title-text {
+  width: 300rpx;
+  font-size: 16px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.good-price-cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.good-price-cart .good-price {
+  color: #72020a;
+  font-size: 14px;
+}

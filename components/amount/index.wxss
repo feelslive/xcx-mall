@@ -17,7 +17,7 @@
 .btn::after{
   border: none;
 }
-.num_wrap input{
+.num_wrap .num_wrap_input{
   width: 90rpx;
   background: #f7f7f7;
   height: 60rpx;

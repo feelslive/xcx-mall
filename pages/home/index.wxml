@@ -1,16 +1,21 @@
 <view class='container'>
-    <!-- 搜索 -->
-    <van-search value="{{ value }}" input-align="center" placeholder="请输入搜索关键词" />
-    <!-- 轮播图 -->
-    <view class='indicator-wrap'>
-        <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}"
-            interval="{{interval}}" duration="{{duration}}" circular="true" indicator-color="rgba(255, 255, 255, .3)"
-            indicator-active-color="#fff" style="width:100%;height:325rpx;">
-            <block wx:key="{{index}}" wx:for-items="{{swipers}}">
-                <swiper-item>
-                    <image class="swiper-item" src="{{item.image}}" mode="aspectFill" />
-                </swiper-item>
-            </block>
-        </swiper>
-    </view>
+  <!-- 搜索 -->
+  <van-sticky>
+    <van-search shape="round" value="{{ value }}" input-align="center" placeholder="请输入搜索关键词" />
+  </van-sticky>
+  <van-notice-bar left-icon="volume-o" text="这是一段公告" />
+  <!-- 轮播图 -->
+  <view class='indicator-wrap'>
+    <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff" style="width:100%;height:325rpx;">
+      <block wx:key="index" wx:for-items="{{swipers}}">
+        <swiper-item>
+          <image class="swiper-item" src="{{item.image}}" mode="aspectFill" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 商品列表 -->
+  <view class="goods-panel">
+    <goodItem class="good-item" wx:for="{{goodList}}" wx:key="index" goodItem="{{item}}"></goodItem>
+  </view>
 </view>

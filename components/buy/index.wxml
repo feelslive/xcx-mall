@@ -2,7 +2,7 @@
   <view class='pop_main'>
     <view class='buy_header'>
       <view class='head_img'>
-        <image src='{{partData.loopImgUrl[0]}}'></image>
+        <image class="head_img_image" src='{{partData.loopImgUrl[0]}}'></image>
       </view>
       <view class='info'>
         <text class='price'>¥{{partData.price}}</text>
@@ -17,7 +17,7 @@
       </view>
     </view>
     <view class='pop_btn'>
-      <button catchtap='buy'>加入购物车</button>
+      <button class="pop_btn_button" catchtap='buy'>加入购物车</button>
     </view>
   </view>
 </view>
