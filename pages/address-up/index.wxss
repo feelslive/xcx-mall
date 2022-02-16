@@ -1,0 +1,27 @@
+/* pages/shipping-address/shipping-address.wxss .main*/
+
+page{
+    width: 100%;
+    background: #f7f7f7;
+}
+.main{
+    padding: 30rpx;
+    background: #FFF;
+
+}
+.add-address-btn {
+    margin-top: 50rpx;
+}
+.van-cell__title {
+    color: #646566;
+}
+.van-cell__value {
+    color: #000 !important;
+}
+.van-field__control--textarea {
+    min-height: 100rpx !important;
+}
+.defaultAddress {
+    margin: 20rpx;
+    font-size: 28rpx;
+}

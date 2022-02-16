@@ -1,0 +1,23 @@
+<view class="">
+    <block wx:for="{{addressList}}" wx:key="index">
+        <view class="address-list">
+            <view class="address-left">
+                <view class="address-name">
+                    <text class="" style="font-size: 28rpx;margin-right: 10rpx;">{{item.name}}</text>
+                    <text class="">{{item.phone}}</text>
+                </view>
+                <view  class="address-info">
+                    <van-tag wx:if="{{item.default}}" color="#72020a" plain style="margin-right: 10rpx;">默认</van-tag>
+                    <text class="">{{item.city}}</text>
+                    <text class="">{{item.address}}</text>
+                </view>
+            </view>
+            <view class="address-edit"  bind:tap="upAddress" data-info="{{item}}">
+                编辑
+            </view>
+        </view>
+    </block>
+    <view class="add-address-btn">
+        <van-button color="#000" round block bind:click="upAddress">新增收获地址</van-button>
+    </view>
+</view>

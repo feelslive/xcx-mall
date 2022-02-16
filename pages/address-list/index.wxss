@@ -1,0 +1,36 @@
+/* pages/address-list/index.wxss */
+.address-list {
+    padding: 30rpx;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10rpx;
+}
+.address-left {
+    flex: 1;
+    padding-right: 20rpx;
+    border-right: 1rpx solid #ccc;
+}
+.address-name {
+    font-size: 24rpx;
+    color: #000;
+    margin-bottom: 20rpx;
+}
+.address-info {
+    font-size: 24rpx;
+    color: #707070;
+}
+.address-edit {
+    width: 80rpx;
+    color: #1296db;
+    text-align: right;
+    font-size: 24rpx;
+}
+.add-address-btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20rpx 20rpx 50rpx;
+    background-color: #fff;
+}

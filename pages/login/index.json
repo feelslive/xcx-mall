@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "send-code-btn": "/components/sendCodeBtn/index",
-    "van-field": "@vant/weapp/field/index"
+    "send-code-btn": "/components/sendCodeBtn/index"
   }
 }

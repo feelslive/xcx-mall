@@ -27,8 +27,6 @@
             </view>
           </view>
         </view>
-        <!-- 删除 -->
-        <view class='del' catchtap="del" data-index="{{index}}">删除</view>
       </view>
     </block>
     <view class='fixBar'>
