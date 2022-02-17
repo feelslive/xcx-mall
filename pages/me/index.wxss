@@ -1,23 +1,82 @@
+.container {
+    background-color: #fff
+}
+
 .userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.userinfo button{
-  margin-top: 100rpx;
-  background-color: #fff
+
+.userinfo button {
+    margin-top: 100rpx;
+    background-color: #fff
 }
+
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
 }
 
 .userinfo-nickname {
-  color: #aaa;
+    color: #aaa;
 }
 
 .usermotto {
-  margin-top: 200px;
+    margin-top: 200px;
+}
+
+.address {
+    border-top: 10rpx solid #f7f7f7;
+}
+
+.order {
+    border-top: 20rpx solid #f7f7f7;
+    border-bottom: 20rpx solid #f7f7f7;
+}
+
+.order-title {
+    padding-left: 30rpx;
+    margin-top: 30rpx;
+    font-size: 32rpx;
+}
+
+.order-status {
+    height: 140rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 24rpx;
+    padding: 0 30rpx 10rpx;
+
+}
+
+.order-item {
+    flex: 1;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.order-danger {
+    height: 50rpx;
+    position: absolute;
+    top: 18rpx;
+    right: 28rpx;
+    z-index: 99;
+}
+
+.order-danger .van-tag--danger {
+    min-width: 32rpx;
+    padding: 0;
+    text-align: center;
+    display: block;
+}
+.order-item:active {
+    background-color: #f7f7f7;
 }

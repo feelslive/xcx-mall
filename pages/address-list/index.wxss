@@ -1,10 +1,14 @@
 /* pages/address-list/index.wxss */
+.address {
+    padding: 30rpx;
+}
 .address-list {
     padding: 30rpx;
     background-color: #fff;
     display: flex;
     align-items: center;
     margin-bottom: 10rpx;
+    border-radius: 8rpx;
 }
 .address-left {
     flex: 1;

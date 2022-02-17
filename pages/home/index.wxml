@@ -3,11 +3,11 @@
   <van-sticky>
     <van-search shape="round" value="{{ value }}" input-align="center" placeholder="请输入搜索关键词" />
   </van-sticky>
-  <van-notice-bar left-icon="volume-o" text="这是一段公告" />
+  <van-notice-bar left-icon="volume-o" text="{{notice}}" />
   <!-- 轮播图 -->
   <view class='indicator-wrap'>
     <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff" style="width:100%;height:325rpx;">
-      <block wx:key="index" wx:for-items="{{swipers}}">
+      <block wx:key="index" wx:for-items="{{swiperList}}">
         <swiper-item>
           <image class="swiper-item" src="{{item.image}}" mode="aspectFill" />
         </swiper-item>

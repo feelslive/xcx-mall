@@ -1,11 +1,8 @@
 <view class='cart'>
-  <view class='empty_wrap' wx:if='{{cartArray.length == 0}}'>
-    <image class='empyt_icon' src='/image/shop_cart.png'></image>
-    <text class='empyt_txt'>购物车空空如也，去逛逛吧~</text>
-  </view>
+    <van-empty   wx:if='{{cartArray.length == 0}}' description="购物车空空如也，去逛逛吧" />
   <view wx:else class='section'>
-    <text wx:if="{{isEditing}}" bindtap="changeIsEditing" data-operation="complete">完成</text>
-    <text wx:else bindtap="changeIsEditing" data-operation="edit">编辑</text>
+    <view class="section-edit" wx:if="{{isEditing}}" bindtap="changeIsEditing" data-operation="complete">完成</view>
+    <view  class="section-edit" wx:else bindtap="changeIsEditing" data-operation="edit">编辑</view>
     <block wx:key="index" wx:for='{{cartArray}}'>
       <view class="good_list {{item.isTouchMove ? 'touch-move-active' : ''}}" bindtap='switchGoodDetail' data-index="{{index}}">
         <view class='content'>
@@ -20,7 +17,7 @@
                 <text>{{item.title}}</text>
               </view>
               <view class='good_price'>
-                <text class='price'>{{item.price}}</text>
+                <text class='price'>¥{{item.price}}</text>
                 <!-- 商品数量 -->
                 <amount count='{{item.total}}' data-index='{{index}}' bind:myevent="onGetCount" bind:subevent='subCount' bind:addevent='addCount'></amount>
               </view>
@@ -30,7 +27,7 @@
       </view>
     </block>
     <view class='fixBar'>
-      <van-submit-bar wx:if="{{!isEditing}}" custom-class="custom-submit-bar" disabled='{{totalCount < 1}}' button-text="提交订单" bind:submit="setAccount" safe-area-inset-bottom="{{false}}">
+      <van-submit-bar wx:if="{{!isEditing}}" custom-class="custom-submit-bar"  button-class="custom-submit-button" disabled='{{totalCount < 1}}' button-text="提交订单" bind:submit="setAccount" safe-area-inset-bottom="{{false}}">
         <view class='select_all' catchtap='selectAll'>
           <image wx:if='{{selectAll}}' class='icon' src='/image/selected.png'></image>
           <image wx:else class='icon' src='/image/unselect.png'></image>
@@ -41,7 +38,7 @@
           <text class='money'>¥{{totalMoney}}</text>
         </view>
       </van-submit-bar>
-      <van-submit-bar wx:else custom-class="custom-submit-bar" disabled='{{totalCount < 1}}' button-text="删除" bind:submit="delAccount" safe-area-inset-bottom="{{false}}">
+      <van-submit-bar wx:else custom-class="custom-submit-bar"  button-class="custom-submit-button" disabled='{{totalCount < 1}}' button-text="删除" bind:submit="delAccount" safe-area-inset-bottom="{{false}}">
         <view class='select_all' catchtap='selectAll'>
           <image wx:if='{{selectAll}}' class='icon' src='/image/selected.png'></image>
           <image wx:else class='icon' src='/image/unselect.png'></image>

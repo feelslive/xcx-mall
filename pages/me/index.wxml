@@ -7,7 +7,45 @@
             <text class="userinfo-nickname">{{userInfo.nickName}}</text>
         </block>
     </view>
-    <view class="">
-        <van-cell title="收货地址管理" is-link value=""    bind:click="upAddress"/>
+    <view class="address">
+        <van-cell title="收货地址管理" is-link value="" bind:click="upAddress" />
+    </view>
+    <view class="order">
+        <view class="order-title">我的订单</view>
+        <view class="order-status">
+            <view class="order-item">
+                <view>
+                    <van-icon size="22px" name="notes-o" />
+                </view>
+                <view>全部订单</view>
+            </view>
+            <view class="order-item">
+                <van-tag class="order-danger" round type="danger">9</van-tag>
+                <view>
+                    <van-icon size="22px" name="after-sale" />
+                </view>
+                <view>待付款</view>
+            </view>
+            <view class="order-item">
+                <van-tag class="order-danger" round type="danger">9</van-tag>
+                <view>
+                    <van-icon size="22px" name="logistics" />
+                </view>
+                <view>待发货</view>
+            </view>
+            <view class="order-item">
+                <van-tag class="order-danger" round type="danger">9</van-tag>
+                <view>
+                    <van-icon size="22px" name="send-gift-o" />
+                </view>
+                <view>待收货</view>
+            </view>
+            <view class="order-item">
+                <view>
+                    <van-icon size="22px" name="cash-back-record" />
+                </view>
+                <view>售后</view>
+            </view>
+        </view>
     </view>
 </view>

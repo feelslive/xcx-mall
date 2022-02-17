@@ -44,7 +44,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/address-list/index",
+          "pathName": "pages/me/index",
           "query": "",
           "scene": null
         }

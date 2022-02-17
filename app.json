@@ -14,10 +14,10 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fbf9fe",
+    "navigationBarBackgroundColor": "#FFF",
     "navigationBarTitleText": "mall",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#fbf9fe"
+    "backgroundColor": "#FFF"
   },
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
@@ -26,7 +26,9 @@
     "van-icon": "@vant/weapp/icon/index",
     "van-field": "@vant/weapp/field/index",
     "van-popup": "@vant/weapp/popup/index",
-    "van-cell": "@vant/weapp/cell/index"
+    "van-cell": "@vant/weapp/cell/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-tag": "@vant/weapp/tag/index"
   },
   "tabBar": {
     "color": "#707070",

@@ -1,24 +1,25 @@
 /* components/amount/index.wxss */
 .num_wrap{
-  width: 220rpx;
+  /* width: 220rpx; */
   vertical-align: middle;
   display: flex;
   flex-direction: row;
 }
 .num_wrap .btn{
-  width: 70rpx;
+  width: 60rpx;
   height: 60rpx;
   line-height: 60rpx;
   background: #f7f7f7;
   text-align: center;
   border-radius: 0;
   color: #333;
+  padding: 0 !important;
 }
 .btn::after{
   border: none;
 }
 .num_wrap .num_wrap_input{
-  width: 90rpx;
+  width: 60rpx;
   background: #f7f7f7;
   height: 60rpx;
   color: #333;
