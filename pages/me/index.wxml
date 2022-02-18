@@ -5,9 +5,10 @@
         <block wx:else>
             <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
             <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+            <text class="userinfo-nickname">{{phone}}</text>
         </block>
     </view>
-    <view class="address">
+    <view class="cell-item">
         <van-cell title="收货地址管理" is-link value="" bind:click="upAddress" />
     </view>
     <view class="order">
@@ -47,5 +48,11 @@
                 <view>售后</view>
             </view>
         </view>
+    </view>
+    <view class="cell-item">
+        <van-cell title="客服中心" is-link value="" bind:click="upAddress" />
+    </view>
+    <view class="cell-item">
+        <van-cell title="账号注销" is-link value="" bind:click="exit" />
     </view>
 </view>

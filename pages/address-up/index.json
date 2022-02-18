@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText":"收货地址",
+  "navigationBarTitleText":"编辑地址",
   "usingComponents": {
     "van-area": "@vant/weapp/area/index",
     "van-checkbox": "@vant/weapp/checkbox/index"

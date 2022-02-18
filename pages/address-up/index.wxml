@@ -1,6 +1,6 @@
 <!--pages/shipping-address/shipping-address.wxml-->
 <view class="main">
-    <van-field label="联系人" value="{{ concatPerson }}" data-type="concatPerson" placeholder="请输入联系人姓名"
+    <van-field label="联系人" value="{{  name }}" data-type="name" placeholder="请输入联系人姓名"
         bind:change="onChange" input-align="right" />
     <van-field label="手机号" value="{{  phone }}" data-type="phone" placeholder="请输入手机号" bind:change="onChange"
         input-align="right" />

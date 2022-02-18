@@ -9,6 +9,7 @@ Page({
      */
     data: {
         userInfo: {},
+        phone: '',
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
@@ -43,20 +44,41 @@ Page({
                 }
             })
         }
+
+    },
+    onShow: function (options) {
+        if (!wx.getStorageSync('X-Token')) {
+            let router = getCurrentPages()[0]
+            wx.reLaunch({
+                url: '/pages/login/index?url=' + JSON.stringify(router.route),
+            })
+        } else {
+            let info = wx.getStorageSync('USER_INFO')
+            this.setData({
+                phone: info.phone
+            })
+        }
     },
     getUserInfo: function (e) {
-        wx.navigateTo({
-            url: '/pages/login/index',
-        })
-        // app.globalData.userInfo = e.detail.userInfo
-        // this.setData({
-        //   userInfo: e.detail.userInfo,
-        //   hasUserInfo: true
+        // wx.navigateTo({
+        //     url: '/pages/login/index',
         // })
+        app.globalData.userInfo = e.detail.userInfo
+        this.setData({
+            userInfo: e.detail.userInfo,
+            hasUserInfo: true
+        })
     },
     upAddress() {
         wx.navigateTo({
             url: '/pages/address-list/index'
+        })
+    },
+    exit() {
+        wx.removeStorageSync('X-Token')
+        wx.removeStorageSync('USER_INFO')
+        wx.switchTab({
+            url: '/pages/home/index',
         })
     }
 })

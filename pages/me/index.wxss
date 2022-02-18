@@ -4,8 +4,9 @@
 
 .userinfo {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
+    padding: 0 40rpx;
 }
 
 .userinfo button {
@@ -28,7 +29,7 @@
     margin-top: 200px;
 }
 
-.address {
+.cell-item {
     border-top: 10rpx solid #f7f7f7;
 }
 

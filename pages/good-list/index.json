@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "首页",
+  "navigationBarTitleText": "商品列表",
   "usingComponents": {
     "van-notice-bar": "@vant/weapp/notice-bar/index",
     "goodItem": "/components/goodItem/index"

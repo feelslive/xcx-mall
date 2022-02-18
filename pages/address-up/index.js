@@ -13,7 +13,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        concatPerson: "", //联系人
+        name: "", //联系人
         phone: "", //手机号
         city: "请选择", //城市
         provinceName: "", //国标收货地址第一级地址
@@ -28,7 +28,17 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {},
+    onLoad: function (options) {
+        console.log(options)
+        let info = JSON.parse(options.addressInfo)
+        this.setData({
+            name: info.name,
+            phone: info.phone,
+            city: info.city,
+            address: info.address,
+            checked: info.default
+        })
+    },
     showPopup() {
         this.setData({
             show: true
@@ -62,8 +72,8 @@ Page({
     onChange(e) {
         console.log(e)
         let type = e.currentTarget.dataset.type
-        if (type == "concatPerson") {
-            this.data.concatPerson = e.detail
+        if (type == "name") {
+            this.data.name = e.detail
         } else if (type == "phone") {
             this.data.phone = e.detail
         } else if (type == "address") {
@@ -72,10 +82,10 @@ Page({
     },
     //保存
     save: function () {
-        let concatPerson = this.data.concatPerson
+        let name = this.data.name
         let phone = this.data.phone
         let address = this.data.address
-        if (!concatPerson) {
+        if (!name) {
             wx.showToast({
                 title: "请输入联系人姓名",
                 icon: 'none' //success、loading、none 

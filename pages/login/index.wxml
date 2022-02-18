@@ -1,11 +1,16 @@
 <!-- pages/login/index.wxml -->
 <view class="login-wrap">
-  <van-cell-group>
-    <van-field value="{{ phone }}" bindinput="changeInput" data-type="phone" label="手机号" placeholder="请输入手机号" clearable />
-    <van-field value="{{ code }}" bindinput="changeInput" data-type="code" center clearable label="短信验证码" placeholder="请输入短信验证码" border="{{ false }}" use-button-slot>
-      <!-- <van-button slot="button" size="small" type="primary">发送验证码</van-button> -->
-      <send-code-btn slot="button" disabled="{{disabled}}" bindsend="getSmsCodeByPhone"></send-code-btn>
-    </van-field>
-  </van-cell-group>
-  <van-button color="#000" size="large" round bind:click="toLogin">登陆</van-button>
+    <van-cell-group class="input-group">
+        <van-field value="{{ phone }}" bindinput="changeInput" data-type="phone" label="手机号" placeholder="请输入手机号"
+            clearable />
+        <van-field value="{{ code }}" bindinput="changeInput" data-type="code" center clearable label="短信验证码"
+            placeholder="请输入验证码" use-button-slot>
+            <!-- <van-button slot="button" size="small" type="primary">发送验证码</van-button> -->
+            <send-code-btn slot="button" disabled="{{disabled}}" bindsend="getSmsCodeByPhone"></send-code-btn>
+        </van-field>
+    </van-cell-group>
+    <view class="btn">
+        <van-button color="#000" size="large" round bind:click="toLogin">登陆</van-button>
+        <van-button color="#000" plain size="large" round bind:click="toHome">首页</van-button>
+    </view>
 </view>

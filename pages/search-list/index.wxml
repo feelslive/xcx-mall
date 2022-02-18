@@ -1,0 +1,29 @@
+<view class='prolist'>
+    <!-- 搜索 -->
+    <van-sticky>
+        <van-search  focus shape="round"  bind:search="search"  bind:cancel="cancel" value="{{ value }}" input-align="center"  show-action
+            placeholder="请输入搜索关键词" />
+    </van-sticky>
+    <block wx:key="{{index}}" wx:for='{{prolist}}'>
+        <view class='prolist_item' bindtap='switchProlistDetail' data-index='{{index}}'>
+            <view class='prolist_cover'>
+                <image src='{{item.cover}}'></image>
+            </view>
+            <view class='prolist_info'>
+                <view class='prolist_title'>
+                    <text>{{item.title}}</text>
+                </view>
+                <view class='prolist_price'>
+                    <text>¥ {{item.price}}</text>
+                </view>
+                <view class='prolist_other'>
+                    <text class='prolist_conmment'>{{item.comment}}条评价</text>
+                    <text class='prolist_rate'>好评率{{item.rate}}</text>
+                </view>
+            </view>
+        </view>
+    </block>
+    <view class='endview' wx:if='{{noData}}'>
+        <text>没有更多数据</text>
+    </view>
+</view>

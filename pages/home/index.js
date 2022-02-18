@@ -29,7 +29,7 @@ Page({
         duration: 500,
         goodList: [{
             "id": "4a4c8b8e4d8c22a97a94b46f58c1f3b9",
-            "cover": "/image/classify/miphone.png",
+            "cover": "https://img01.yzcdn.cn/vant/apple-1.jpg",
             "title": "黑莓（BlackBerry）KEY2标准版 6GB+64GB双卡双待 4G全网通手机 黑色 移动联通电信手机",
             "price": "3388.00",
             "originalPrice": "4000",
@@ -37,7 +37,7 @@ Page({
             "count": 1,
         }, {
             "id": "5a4c8b8e4d8c22a97a94b46f58c1f3b9",
-            "cover": "/image/classify/huawei.png",
+            "cover": "https://img01.yzcdn.cn/vant/apple-2.jpg",
             "title": "HUAWEI P20 Pro 全面屏徕卡三摄游戏手机 6GB+128GB 亮黑色 全网通移动联通电信4G手机 双卡双待",
             "price": "1499.00", // 商品现价格
             "originalPrice": "4000", // 原价
@@ -45,7 +45,7 @@ Page({
             "count": 1, // 最小购买数量
         }, {
             "id": "3a4c8b8e4d8c22a97a94b46f58c1f3b9",// 商品id
-            "cover": "/image/classify/phone.png", // 商品封面
+            "cover": "https://img01.yzcdn.cn/vant/apple-3.jpg", // 商品封面
             "title": "荣耀8X Max 7.12英寸90%屏占比珍珠屏", // 商品标题
             "price": "1499.00", // 商品现价格
             "originalPrice": "4000", // 原价
@@ -78,4 +78,9 @@ Page({
             }
         })
     },
+    search() {
+        wx.navigateTo({
+            url: '/pages/search-list/index'
+        })
+    }
 })

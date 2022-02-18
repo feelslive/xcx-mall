@@ -14,7 +14,7 @@ Page({
         }, {
             name: "张三",
             phone: "18810881022",
-            default: true,
+            default: false,
             address: "将省市区数据保开发",
             city: "北京市北京市朝阳区"
         }]
