@@ -74,6 +74,11 @@ Page({
             url: '/pages/address-list/index'
         })
     },
+    toOrderList() {
+        wx.navigateTo({
+            url: '/pages/order-list/index'
+        })
+    },
     exit() {
         wx.removeStorageSync('X-Token')
         wx.removeStorageSync('USER_INFO')

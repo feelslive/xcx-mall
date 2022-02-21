@@ -13,8 +13,7 @@ Page({
     baitiaoSelectItem: {
       desc: "【白条支付】首单享立减优惠"
     },
-    hideBaitiao: true, // 是否隐藏白条的遮罩
-    hideBuy: true, // 是否购买的遮罩
+    hideBuy: false, // 是否购买的遮罩
     badgeCount: 0
   },
 
@@ -69,19 +68,11 @@ Page({
     })
   },
   /**
-   * 显示白条弹框
-   */
-  popBaitiaoView: function () {
-    this.setData({
-      hideBaitiao: false
-    })
-  },
-  /**
    * 显示商品弹框
    */
   popBuyView: function () {
     this.setData({
-      hideBuy: false
+      hideBuy: true
     })
   },
   updateSelectItem(e){ // 更新data
