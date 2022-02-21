@@ -2,7 +2,7 @@
 <view class="pup-sku" wx:if="{{hideBuy}}">
     <view class="pup-sku-main">
         <view class='pup-sku-header'>
-            <image class="pup-sku-img" src="{{defaultSku.pic?defaultSku.pic:pic}}"></image>
+            <image class="pup-sku-img" src="{{defaultSku.pic?defaultSku.pic:this.data.partData.loopImgUrl[0]}}"></image>
             <view class="pup-sku-price" wx-if="{{findSku}}">
                 ￥
                 <text class="pup-sku-price-int">{{wxs.parsePrice(defaultSku.price)[0]}}</text>

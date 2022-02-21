@@ -14,34 +14,34 @@
     <view class="order">
         <view class="order-title">我的订单</view>
         <view class="order-status">
-            <view class="order-item" bindtap="toOrderList">
+            <view class="order-item" bindtap="toOrderList" data-active="0">
                 <view>
                     <van-icon size="22px" name="notes-o" />
                 </view>
                 <view>全部订单</view>
             </view>
-            <view class="order-item" bindtap="toOrderList">
+            <view class="order-item" bindtap="toOrderList"  data-active="1">
                 <van-tag class="order-danger" round type="danger">9</van-tag>
                 <view>
                     <van-icon size="22px" name="after-sale" />
                 </view>
                 <view>待付款</view>
             </view>
-            <view class="order-item" bindtap="toOrderList">
+            <view class="order-item" bindtap="toOrderList"  data-active="2">
                 <van-tag class="order-danger" round type="danger">9</van-tag>
                 <view>
                     <van-icon size="22px" name="logistics" />
                 </view>
                 <view>待发货</view>
             </view>
-            <view class="order-item" bindtap="toOrderList">
+            <view class="order-item" bindtap="toOrderList"  data-active="3">
                 <van-tag class="order-danger" round type="danger">9</van-tag>
                 <view>
                     <van-icon size="22px" name="send-gift-o" />
                 </view>
                 <view>待收货</view>
             </view>
-            <view class="order-item" bindtap="toOrderList">
+            <view class="order-item" bindtap="toOrderList"  data-active="4">
                 <view>
                     <van-icon size="22px" name="cash-back-record" />
                 </view>

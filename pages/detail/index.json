@@ -1,7 +1,6 @@
 {
     "navigationBarTitleText": "商品详情",
-  "usingComponents": {
-    "infocell": "/components/infocell/index",
-    "buy": "/components/buy/index"
-  }
+    "usingComponents": {
+        "van-stepper": "@vant/weapp/stepper/index"
+    }
 }

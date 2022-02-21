@@ -11,7 +11,7 @@
             <image class='icon' wx:else src='/image/unselect.png'></image>
           </view>
           <view class='goods'>
-            <image class='good_img' src='{{item.cover}}'></image>
+            <image class='good_img' src='{{item.cover || item.loopImgUrl[0]}}'></image>
             <view class='good_info'>
               <view class='good_title'>
                 <text>{{item.title}}</text>

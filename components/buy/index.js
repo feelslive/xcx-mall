@@ -20,7 +20,7 @@ Component({
         commentShow: false,
         couponList: [],
         skuList: [{
-                pic: null,
+                pic: '/image/classify/phone.png',
                 price: 9999,
                 properties: "颜色:白色;内存:16G;版本:公开版",
                 skuId: 1788,
@@ -28,7 +28,7 @@ Component({
                 stocks: 999
             },
             {
-                pic: null,
+                pic: '/image/classify/miphone.png',
                 price: 9999,
                 properties: "颜色:红色;内存:64G;版本:绑定版",
                 skuId: 17889,
@@ -46,6 +46,7 @@ Component({
     },
     lifetimes: {
         attached: function () {
+            console.log('partData',this.data.partData)
             // 在组件实例进入页面节点树时执行
             this.groupSkuProp()
         },

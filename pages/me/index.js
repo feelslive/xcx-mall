@@ -74,9 +74,10 @@ Page({
             url: '/pages/address-list/index'
         })
     },
-    toOrderList() {
+    toOrderList(e) {
+        console.log(e.currentTarget.dataset.active)
         wx.navigateTo({
-            url: '/pages/order-list/index'
+            url: '/pages/order-list/index?active=' + e.currentTarget.dataset.active
         })
     },
     exit() {
