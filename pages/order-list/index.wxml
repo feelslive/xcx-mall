@@ -1,9 +1,29 @@
 <view>
     <van-tabs active="{{ active }}">
-        <van-tab title="全部订单">内容 1</van-tab>
-        <van-tab title="待付款">内容 2</van-tab>
-        <van-tab title="待发货">内容 3</van-tab>
-        <van-tab title="待收货">内容 4</van-tab>
-        <van-tab title="售后">内容 5</van-tab>
+        <van-tab title="全部订单"></van-tab>
+        <van-tab title="待付款"></van-tab>
+        <van-tab title="待发货"></van-tab>
+        <van-tab title="待收货"></van-tab>
+        <van-tab title="售后"></van-tab>
     </van-tabs>
+    <block wx:key="index" wx:for='{{cartArray}}'>
+        <view class="good_list" bindtap='switchGoodDetail' data-index="{{index}}">
+            <view class='content'>
+                <view class='goods'>
+                    <image class='good_img' src='{{item.pic}}'></image>
+                    <view class='good_info'>
+                        <view class='good_title'>
+                            <text>{{item.title}}</text>
+                        </view>
+                        <van-tag plain type="primary">{{item.skuName}}</van-tag>
+                        <view class='good_price'>
+                            <text class='price'>¥{{item.price}}</text>
+                            <!-- 商品数量 -->
+                            <text class='price'>X{{item.total}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
 </view>

@@ -61,16 +61,13 @@
                 <view class="pup-sku-price" wx-if="{{!findSku}}">无货</view>
                 <view class='pup-sku-prop'>
                     <text>已选</text>
-                    {{selectedProp.length>0?selectedProp+'，':selectedProp}}{{partData.count}}件
+                    {{selectedProp.length>0?selectedProp+'，':selectedProp}}{{total}}件
                 </view>
                 <!-- <view class='close' bindtap='closePopup'></view> -->
                 <van-icon class='close' name="close" bindtap='closePopup' />
             </view>
             <view class='pup-sku-body'>
                 <view class="pup-sku-area">
-                    <!-- <view wx:for="{{skuGroup}}"  wx:for-index="key" wx:for-item="value"  wx:key='*this'>
-                    {{key}} {{value}}
-                </view> -->
                     <block wx:for="{{skuGroup}}" wx:for-index="key" wx:for-item="value" wx:key='*this'>
                         <view class='sku-kind'>{{key}}</view>
                         <view class='sku-choose'>
@@ -86,7 +83,7 @@
                 <view class="pup-sku-count">
                     <!-- 商品数量 -->
                     <view class="count-name">数量</view>
-                    <van-stepper value="{{  partData.count }}" bind:change="onChangeCount" />
+                    <van-stepper value="{{ total }}" bind:change="onChangeCount" />
 
                 </view>
             </view>

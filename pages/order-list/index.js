@@ -5,7 +5,19 @@ Page({
      * 页面的初始数据
      */
     data: {
-        active: 1
+        active: 1,
+        "cartArray": [{
+            id: "3a4c8b8e4d8c22a97a94b46f58c1f3b9",
+            pic: "/image/classify/phone.png",
+            price: 9999,
+            properties: "颜色:白色;内存:16G;版本:公开版",
+            select: true,
+            skuId: 1788,
+            skuName: "白色 16G 公开版",
+            stocks: 999,
+            title: "荣耀8X Max 7.12英寸90%屏占比珍珠屏 4GB+64GB 魅海蓝 移动联通电信4G全面屏手机 双卡双待",
+            total: 1,
+        }],
     },
 
     /**

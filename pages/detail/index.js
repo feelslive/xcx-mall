@@ -31,33 +31,17 @@ Page({
                     price: 9999,
                     properties: "颜色:红色;内存:64G;版本:绑定版",
                     skuId: 17889,
-                    skuName: "红色 64G 公开版",
+                    skuName: "红色 64G 绑定版",
                     stocks: 56
                 }
             ],
         },
+        total: 1,
         hideBuy: false, // 是否购买的遮罩
         badgeCount: 0,
         prodNum: 1,
         commentShow: false,
         couponList: [],
-        skuList: [{
-                pic: '/image/classify/phone.png',
-                price: 9999,
-                properties: "颜色:白色;内存:16G;版本:公开版",
-                skuId: 1788,
-                skuName: "白色 16G 公开版",
-                stocks: 999
-            },
-            {
-                pic: '/image/classify/miphone.png',
-                price: 9999,
-                properties: "颜色:红色;内存:64G;版本:绑定版",
-                skuId: 17889,
-                skuName: "红色 64G 公开版",
-                stocks: 56
-            }
-        ],
         skuGroup: {},
         findSku: true,
         defaultSku: undefined,
@@ -141,12 +125,12 @@ Page({
             key: 'cartInfo',
             success(res) {
                 const cartArray = res.data
-                let partData = self.data.partData
+                let partData = self.data.defaultSku
                 let isExit = false; // 判断数组是否存在该商品
                 cartArray.forEach(cart => {
-                    if (cart.id == partData.id) { // 存在该商品
+                    if (cart.skuId == partData.skuId) { // 存在该商品
                         isExit = true
-                        cart.total += self.data.partData.count
+                        cart.total += self.data.total
                         wx.setStorage({
                             key: 'cartInfo',
                             data: cartArray,
@@ -154,7 +138,7 @@ Page({
                     }
                 })
                 if (!isExit) { // 不存在该商品
-                    partData.total = self.data.partData.count
+                    partData.total = self.data.total
                     cartArray.push(partData)
                     wx.setStorage({
                         key: 'cartInfo',
@@ -164,8 +148,8 @@ Page({
                 self.setBadge(cartArray)
             },
             fail() {
-                let partData = self.data.partData
-                partData.total = self.data.partData.count
+                let partData = self.data.defaultSku
+                partData.total = self.data.total
                 let cartArray = []
                 cartArray.push(partData)
                 wx.setStorage({
@@ -291,6 +275,8 @@ Page({
                 // TODO:
                 // this.data.partData.skuList[i].skuId
                 findSku = true;
+                this.data.partData.skuList[i].id = this.data.partData.id
+                this.data.partData.skuList[i].title = this.data.partData.title
                 this.setData({
                     defaultSku: this.data.partData.skuList[i],
                 });
@@ -322,7 +308,8 @@ Page({
         this.data.partData.selectedPropObj = selectedPropObj
         this.setData({
             selectedPropObj: selectedPropObj,
-            partData: this.data.partData
+            partData: this.data.partData,
+            total: 1
         });
         this.parseSelectedObjToVals();
     },
@@ -342,10 +329,15 @@ Page({
     },
     onChangeCount(e) {
         console.log(e.detail)
-        var partData = this.data.partData
-        partData.count = e.detail
-        this.setData({
-            partData: partData
-        })
+        // console.log(this.data.defaultSku.stocks)
+        if (e.detail > (this.data.defaultSku && this.data.defaultSku.stocks)) {
+            this.setData({
+                total: this.data.defaultSku.stocks
+            })
+        } else {
+            this.setData({
+                total: e.detail
+            })
+        }
     },
 })

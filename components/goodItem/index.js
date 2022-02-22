@@ -9,11 +9,23 @@ Component({
         }
     },
     data: {
-
+        total: 1,
+        defaultSku: {}
+    },
+    lifetimes: {
+        attached: function () {
+            console.log('partDgoodItemata', this.data.goodItem)
+            // 在组件实例进入页面节点树时执行
+            this.data.goodItem.skuList[0].id = this.data.goodItem.id
+            this.data.goodItem.skuList[0].title = this.data.goodItem.title
+            this.setData({
+                defaultSku: this.data.goodItem.skuList[0],
+            });
+        },
     },
     methods: {
         toDetail() {
-            const str = JSON.stringify(this.data.goodItem)
+            const str = JSON.stringify(this.data.defaultSku)
             wx.navigateTo({
                 url: '../../pages/goodDetail/index?item=' + str
             })
@@ -24,11 +36,11 @@ Component({
         switchProlistDetail: function (e) {
             console.log('e', e);
             var index = e.currentTarget.dataset.index
-            const str = JSON.stringify(this.data.goodItem)
+            const str = JSON.stringify(this.data.defaultSku)
             // this.triggerEvent('myevent',{params: data[index]},{})
             wx.navigateTo({
                 // url: '/pages/detail/index?id=' + this.data.prolist[index].id,
-                url: '/pages/detail/index?id=' + this.data.goodItem.id,
+                url: '/pages/detail/index?id=' + this.data.defaultSku.id,
             })
         },
         /**
@@ -40,41 +52,36 @@ Component({
                 key: 'cartInfo',
                 success(res) {
                     const cartArray = res.data
-                    console.log('self.data.goodItem', self.data.goodItem);
-                    let partData = self.data.goodItem
-                    console.log('partData', partData);
+                    let partData = self.data.defaultSku
                     let isExit = false; // 判断数组是否存在该商品
                     cartArray.forEach(cart => {
-                        if (cart.id == partData.id) { // 存在该商品
+                        if (cart.skuId == partData.skuId) { // 存在该商品
                             isExit = true
-                            cart.total += partData.count
+                            cart.total += self.data.total
                             wx.setStorage({
                                 key: 'cartInfo',
                                 data: cartArray,
                             })
                         }
                     })
-                    console.log('partData', partData);
                     if (!isExit) { // 不存在该商品
-                        partData.total = partData.count
+                        partData.total = self.data.total
                         cartArray.push(partData)
                         wx.setStorage({
                             key: 'cartInfo',
                             data: cartArray,
                         })
                     }
-                    // self.setBadge(cartArray)
                 },
                 fail() {
-                    let partData = self.data.goodItem
-                    partData.total = partData.count
+                    let partData = self.data.defaultSku
+                    partData.total = self.data.total
                     let cartArray = []
                     cartArray.push(partData)
                     wx.setStorage({
                         key: 'cartInfo',
                         data: cartArray,
                     })
-                    // self.setBadge(cartArray)
                 }
             })
             // 购物车提醒

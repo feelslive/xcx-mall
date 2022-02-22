@@ -1,7 +1,7 @@
 <!-- components/goodItem/index.wxml -->
 <view bindtap="switchProlistDetail" data-index="{{index}}" class="img-wrap">
   <view class="good-img">
-    <image class="good-image" src="{{goodItem.cover}}"></image>
+    <image class="good-image" src="{{goodItem.skuList[0].pic}}"></image>
   </view>
   <view>
     <view class="good-title">

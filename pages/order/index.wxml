@@ -3,12 +3,13 @@
     <block wx:key="index" wx:for='{{accountInfo.shoppingList}}'>
         <view class='prolist_item' data-index='{{index}}'>
             <view class='prolist_cover'>
-                <image src='{{item.cover}}'></image>
+                <image src='{{item.pic}}'></image>
             </view>
             <view class='prolist_info'>
                 <view class='prolist_title'>
                     <text>{{item.title}}</text>
                 </view>
+                <van-tag plain type="primary">{{item.skuName}}</van-tag>
                 <view class='prolist_des'>
                     <text class='price'>¥ {{item.price}}</text>
                     <text class='total'>x{{item.total}}</text>
@@ -31,7 +32,7 @@
         </view>
     </view>
     <view class='pay_btn'>
-        <van-button  round size="large" type="primary" bind:click='getOpenid'>支付</van-button>
+        <van-button round size="large" type="primary" bind:click='getOpenid'>支付</van-button>
         <!-- <button bindtap='getOpenid'>微信支付</button> -->
     </view>
 </view>

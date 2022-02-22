@@ -21,21 +21,21 @@
                 <view>全部订单</view>
             </view>
             <view class="order-item" bindtap="toOrderList"  data-active="1">
-                <van-tag class="order-danger" round type="danger">9</van-tag>
+                <!-- <van-tag class="order-danger" round type="danger">9</van-tag> -->
                 <view>
                     <van-icon size="22px" name="after-sale" />
                 </view>
                 <view>待付款</view>
             </view>
             <view class="order-item" bindtap="toOrderList"  data-active="2">
-                <van-tag class="order-danger" round type="danger">9</van-tag>
+                <!-- <van-tag class="order-danger" round type="danger">9</van-tag> -->
                 <view>
                     <van-icon size="22px" name="logistics" />
                 </view>
                 <view>待发货</view>
             </view>
             <view class="order-item" bindtap="toOrderList"  data-active="3">
-                <van-tag class="order-danger" round type="danger">9</van-tag>
+                <!-- <van-tag class="order-danger" round type="danger">9</van-tag> -->
                 <view>
                     <van-icon size="22px" name="send-gift-o" />
                 </view>

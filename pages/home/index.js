@@ -9,7 +9,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        notice:"这是一段公告，本店有优惠。",
+        notice: "这是一段公告，本店有优惠。",
         swiperList: [{
                 "id": "4a4c8b8e4d8c22a97a94b46f58c1f3b9", // 商品id
                 "image": "https://img01.yzcdn.cn/vant/apple-1.jpg" //商品封面
@@ -35,22 +35,73 @@ Page({
             "originalPrice": "4000",
             "monthlySales": "35",
             "count": 1,
+            skuList: [{
+                    pic: 'https://img01.yzcdn.cn/vant/apple-1.jpg',
+                    price: 9999,
+                    properties: "颜色:白色;内存:16G;版本:公开版",
+                    skuId: 1788,
+                    skuName: "白色 16G 公开版",
+                    stocks: 999
+                },
+                {
+                    pic: 'https://img01.yzcdn.cn/vant/apple-1.jpg',
+                    price: 9999,
+                    properties: "颜色:红色;内存:64G;版本:绑定版",
+                    skuId: 17889,
+                    skuName: "红色 64G 绑定版",
+                    stocks: 56
+                }
+            ],
         }, {
             "id": "5a4c8b8e4d8c22a97a94b46f58c1f3b9",
             "cover": "https://img01.yzcdn.cn/vant/apple-2.jpg",
             "title": "HUAWEI P20 Pro 全面屏徕卡三摄游戏手机 6GB+128GB 亮黑色 全网通移动联通电信4G手机 双卡双待",
             "price": "1499.00", // 商品现价格
             "originalPrice": "4000", // 原价
-            "monthlySales": "35",   // 月销量
+            "monthlySales": "35", // 月销量
             "count": 1, // 最小购买数量
+            skuList: [{
+                    pic: 'https://img01.yzcdn.cn/vant/apple-2.jpg',
+                    price: 9999,
+                    properties: "颜色:白色;内存:16G;版本:公开版",
+                    skuId: 1788,
+                    skuName: "白色 16G 公开版",
+                    stocks: 999
+                },
+                {
+                    pic: 'https://img01.yzcdn.cn/vant/apple-2.jpg',
+                    price: 9999,
+                    properties: "颜色:红色;内存:64G;版本:绑定版",
+                    skuId: 17889,
+                    skuName: "红色 64G 绑定版",
+                    stocks: 56
+                }
+            ],
         }, {
-            "id": "3a4c8b8e4d8c22a97a94b46f58c1f3b9",// 商品id
+            "id": "3a4c8b8e4d8c22a97a94b46f58c1f3b9", // 商品id
             "cover": "https://img01.yzcdn.cn/vant/apple-3.jpg", // 商品封面
             "title": "荣耀8X Max 7.12英寸90%屏占比珍珠屏", // 商品标题
             "price": "1499.00", // 商品现价格
             "originalPrice": "4000", // 原价
-            "monthlySales": "35",   // 月销量
+            "monthlySales": "35", // 月销量
             "count": 1, // 最小购买数量
+            skuList: [{
+                    pic: 'https://img01.yzcdn.cn/vant/apple-3.jpg',
+                    price: 9999,
+                    properties: "颜色:白色;内存:16G;版本:公开版",
+                    skuId: 1788,
+                    skuName: "白色 16G 公开版",
+                    stocks: 999
+                },
+                {
+                    pic: 'https://img01.yzcdn.cn/vant/apple-3.jpg',
+                    price: 9999,
+                    properties: "颜色:红色;内存:64G;版本:绑定版",
+                    skuId: 17889,
+                    skuName: "红色 64G 绑定版",
+                    stocks: 56
+                }
+            ],
         }, ]
     },
 
