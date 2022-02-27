@@ -15,7 +15,7 @@
         <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取头像昵称</button> -->
         <!-- <van-button color="#000" plain size="large" round bind:click="toHome">首页</van-button> -->
     </view>
-    <view class="btn" wx:if="{{false}}">
+    <view class="wx-btn">
         <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信一键登录</button>
         <!-- <van-button color="#000" round size="large" open-type="getPhoneNumber" bind:getphonenumber="getPhoneNumber">
             微信一键登录

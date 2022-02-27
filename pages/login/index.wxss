@@ -13,7 +13,27 @@ page {
     margin-top: 30rpx;
 }
 
-button {
+.wx-btn {
+    font-size: 28rpx;
+
+}
+
+.wx-btn button {
+    width: 650rpx;
+    height: 88rpx !important;
+    line-height: 88rpx;
+    color: #fff;
+    font-size: 32rpx;
+    border-radius: 44rpx;
+    background-color: #000;
+}
+
+.wx-btn button::after {
+    border: 0;
+}
+
+.btn button {
     height: 88rpx !important;
     margin-bottom: 30rpx !important;
+
 }

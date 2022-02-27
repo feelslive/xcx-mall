@@ -1,11 +1,12 @@
 <view class='container'>
     <view class='userinfo'>
-        <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称
-        </button> -->
-        <image class="userinfo-avatar" src="{{info.headerImg?info.headerImg: '../../image/def_header.png'}}"
-            mode="cover"></image>
+        <button class='userinfo-btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl?userInfo.avatarUrl: '../../image/def_header.png'}}"
+                mode="cover"></image>
+        </button>
+
         <view class="">
-            <view class="userinfo-nickname">{{info.name}}</view>
+            <view class="userinfo-nickname">{{userInfo.nickName}}</view>
             <view class="userinfo-mobile">{{info.mobile}}</view>
         </view>
     </view>
@@ -50,9 +51,12 @@
             </view>
         </view>
     </view>
-    <!-- <view class="cell-item">
-        <van-cell title="客服中心" is-link value="" bind:click="upAddress" />
-    </view> -->
+    <view class="cell-item">
+        <!-- <van-cell title="客服中心" is-link value="" bind:click="upAddress" /> -->
+        <van-cell title="客服中心" is-link>
+            <button class="contact-btn" open-type="contact" bindcontact="handleContact" session-from="sessionFrom"></button>
+        </van-cell>
+    </view>
     <view class="cell-item">
         <van-cell title="账号注销" is-link value="" bind:click="exit" />
     </view>

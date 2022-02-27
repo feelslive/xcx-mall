@@ -2,9 +2,9 @@
 .img-wrap {
   display: flex;
   flex-direction: column;
-  width: 336rpx;
+  width: 330rpx;
   margin-bottom: 20rpx;
-  padding: 20rpx;
+  /* padding: 20rpx; */
   border-radius: 10rpx;
   background: #fff;
   box-sizing: border-box;
@@ -13,12 +13,14 @@
 
 .good-img {
   width: 100%;
-  height: 240rpx;
+  height: 360rpx;
+  border: 1rpx solid #d8d8d8;
 }
 
 .img-wrap .good-image {
   width: 100%;
   height: 100%;
+  border-radius: 4rpx;
   background: #d8d8d8;
 }
 
@@ -30,11 +32,13 @@
 
 .good-title-text {
   width: 300rpx;
-  font-size: 16px;
+  font-size: 24rpx;
+  color: #000;
   display: inline-block;
+  display:-webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .good-price-cart {

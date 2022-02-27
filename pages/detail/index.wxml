@@ -35,11 +35,18 @@
 
     <!-- 购物车 -->
     <view class='btn_bar'>
-        <view class='icon_cart' bindtap='showCartView'>
+        <view class='icon_cart'>
             <!-- <text class='badge' wx:if='{{badgeCount > 0}}'>{{badgeCount}}</text> -->
             <!-- <image src='/image/3.png'></image> -->
-            <van-icon size="20" name="shopping-cart-o" />
-            <text>购物车</text>
+            <view class="shopping" bindtap='showCartView'>
+                <van-icon size="20" name="shopping-cart-o" />
+                <text>购物车</text>
+            </view>
+            <view class="service">
+                <van-icon size="20" name="service-o" />
+                <text>客服</text>
+                <button open-type="contact" bindcontact="handleContact" session-from="sessionFrom">客服</button>
+            </view>
         </view>
         <view class='cart_btn'>
             <!-- <button bindtap='popBuyView'>加入购物车</button> -->

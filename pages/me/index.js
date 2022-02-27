@@ -77,6 +77,7 @@ Page({
         // wx.navigateTo({
         //     url: '/pages/login/index',
         // })
+        console.log('getUserInfo',e.detail.userInfo)
         app.globalData.userInfo = e.detail.userInfo
         this.setData({
             userInfo: e.detail.userInfo,

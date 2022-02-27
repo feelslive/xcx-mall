@@ -10,8 +10,18 @@
     color: #aaa;
 }
 
+.userinfo-btn {
+    /* width: 128rpx;
+    height: 128rpx; */
+    margin: 0;
+    padding: 0;
+}
+
+.userinfo-btn::after {
+    border: 0;
+}
+
 .userinfo button {
-    margin-top: 100rpx;
     background-color: #fff
 }
 
@@ -25,6 +35,7 @@
 .userinfo-nickname {
     font-size: 28rpx;
 }
+
 .userinfo-mobile {
     font-size: 24rpx;
 }
@@ -82,6 +93,12 @@
     text-align: center;
     display: block;
 }
+
 .order-item:active {
     background-color: #f7f7f7;
+}
+
+.contact-btn {
+    opacity: 0;
+    height: 48rpx;
 }

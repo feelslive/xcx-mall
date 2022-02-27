@@ -61,15 +61,27 @@
   position: relative;
   width: 50%;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   font-size: 22rpx;
   color: #000;
 }
-.icon_cart image {
-  width: 80rpx;
-  height: 80rpx;
+.shopping {
+    display: flex;
+    flex-direction: column;
+}
+.service {
+    display: flex;
+    flex-direction: column;
+}
+.service button {
+    position: absolute;
+    opacity: 0;
+    font-size: 22rpx;
+    color: #000;
+    background-color: #fff;
+    border: none !important;
 }
 .cart_btn{
   width: 60%;
