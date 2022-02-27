@@ -15,7 +15,7 @@
   <van-notice-bar left-icon="volume-o" text="{{notice}}" />
   <view class="distribution">
       <view class="distribution-item">
-          门店自体
+          门店自提
       </view>
       <view class="distribution-item">
           同城速配
