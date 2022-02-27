@@ -11,7 +11,7 @@
                         <image class='icon' wx:else src='/image/unselect.png'></image>
                     </view>
                     <view class='goods'>
-                        <image class='good_img' src='{{item.pic}}'></image>
+                        <image class='good_img' src='{{item.skuImg||item.loopImgUrl[0]}}'></image>
                         <view class='good_info'>
                             <view class='good_title'>
                                 <text>{{item.title}}</text>
@@ -30,7 +30,7 @@
         </block>
         <view class='fixBar'>
             <van-submit-bar wx:if="{{!isEditing}}" custom-class="custom-submit-bar" button-class="custom-submit-button"
-                disabled='{{totalCount < 1}}' button-text="提交订单" bind:submit="setAccount"
+                disabled='{{totalCount < 1}}' button-text="去结算" bind:submit="setAccount"
                 safe-area-inset-bottom="{{false}}">
                 <view class='select_all' catchtap='selectAll'>
                     <image wx:if='{{selectAll}}' class='icon' src='/image/selected.png'></image>

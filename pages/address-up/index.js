@@ -2,9 +2,11 @@ import {
     areaList
 } from '@vant/area-data';
 import {
-    vailPhone,
-    showToast
+    vailPhone
 } from '../../utils/util.js'
+const {
+    addAddress
+} = require('../../utils/api.js');
 //获取app实例
 var app = getApp()
 Page({
@@ -23,6 +25,7 @@ Page({
         show: false,
         areaList,
         checked: false,
+        addressId: null
     },
 
     /**
@@ -31,13 +34,26 @@ Page({
     onLoad: function (options) {
         console.log(options)
         let info = JSON.parse(options.addressInfo)
-        this.setData({
-            name: info.name,
-            phone: info.phone,
-            city: info.city,
-            address: info.address,
-            checked: info.default
-        })
+        if (info.id) {
+            let provinceName = info.province || ''
+            let cityName = info.city || ''
+            let countyName = info.country || ''
+            this.setData({
+                name: info.userName || '',
+                phone: info.mobile,
+                provinceName,
+                cityName, //国标收货地址第二级地址
+                countyName,
+                address: info.address || '',
+                checked: info.default,
+                addressId: info.id,
+                city: provinceName + cityName + countyName
+            })
+        } else {
+            wx.setNavigationBarTitle({
+                title: "新增地址"
+            })
+        }
     },
     showPopup() {
         this.setData({
@@ -50,9 +66,7 @@ Page({
         });
     },
     confirmCity(val) {
-        console.log('val', val.detail.values[0])
-        console.log('val', val.detail.values[1])
-        console.log('val', val.detail.values[2])
+        console.log('val', val.detail.values)
         this.setData({
             provinceName: val.detail.values[0].name,
             cityName: val.detail.values[1].name,
@@ -108,6 +122,43 @@ Page({
                 return
             }
         }
+        this.saveData()
+    },
+    saveData() {
+        const {
+            phone,
+            name,
+            address,
+            checked,
+            provinceName,
+            cityName,
+            countyName,
+            addressId
+        } = this.data
+        let params = {
+            userName: name,
+            province: provinceName,
+            city: cityName,
+            country: countyName,
+            address: address,
+            mobile: phone,
+            default: checked,
+        }
+        if (addressId) {
+            params.addressId = addressId
+        }
+        addAddress(params).then(res => {
+            wx.showToast({
+                title: '保存成功',
+                icon: 'success',
+                duration: 2000
+            })
+            setTimeout(() => {
+                wx.navigateBack({
+                    delta: 1
+                })
+            }, 1000);
+        })
     },
     /**
      * 生命周期函数--监听页面显示

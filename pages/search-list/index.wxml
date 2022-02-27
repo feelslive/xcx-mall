@@ -4,25 +4,27 @@
         <van-search  focus shape="round"  bind:search="search"  bind:cancel="cancel" value="{{ value }}" input-align="center"  show-action
             placeholder="请输入搜索关键词" />
     </van-sticky>
-    <block wx:key="{{index}}" wx:for='{{prolist}}'>
-        <view class='prolist_item' bindtap='switchProlistDetail' data-index='{{index}}'>
-            <view class='prolist_cover'>
-                <image src='{{item.cover}}'></image>
+    <view wx:if="{{goodShow}}">
+        <block wx:key="index" wx:for='{{goodList}}'>
+            <view class='prolist_item' bindtap='toDetail' data-info='{{item}}' data-index='{{index}}'>
+                <view class='prolist_cover'>
+                    <image src='{{item.loopImgUrl[0]}}'></image>
+                </view>
+                <view class='prolist_info'>
+                    <view class='prolist_title'>
+                        <text>{{item.title}}</text>
+                    </view>
+                    <view class='prolist_price'>
+                        <text>¥ {{item.price}}</text>
+                    </view>
+                    <view class='prolist_other'>
+                        <text class='prolist_conmment'>{{item.comment}}条评价</text>
+                        <text class='prolist_rate'>好评率{{item.rate}}</text>
+                    </view>
+                </view>
             </view>
-            <view class='prolist_info'>
-                <view class='prolist_title'>
-                    <text>{{item.title}}</text>
-                </view>
-                <view class='prolist_price'>
-                    <text>¥ {{item.price}}</text>
-                </view>
-                <view class='prolist_other'>
-                    <text class='prolist_conmment'>{{item.comment}}条评价</text>
-                    <text class='prolist_rate'>好评率{{item.rate}}</text>
-                </view>
-            </view>
-        </view>
-    </block>
+        </block>
+    </view>
     <view class='endview' wx:if='{{noData}}'>
         <text>没有更多数据</text>
     </view>

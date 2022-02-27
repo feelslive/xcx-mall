@@ -11,8 +11,8 @@
     box-sizing: border-box;
     padding: 10rpx;
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    /* display: flex; */
+    /* flex-direction: row; */
     margin-right: 0;
     transition: all 0.4s;
     transform: translateX(90px);
@@ -27,6 +27,7 @@
     padding: 20rpx 0;
     display: flex;
     flex-direction: row;
+    border-bottom: 1rpx solid #f7f7f7;
 }
 
 .goods .good_img {
@@ -64,4 +65,14 @@
     color: #72020a;
     font-weight: bold;
     font-size: 24rpx;
+}
+.order-status {
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10rpx 30rpx;
+}
+.order-status-text {
+    font-size: 26rpx;
 }

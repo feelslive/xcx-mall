@@ -1,6 +1,5 @@
 {
-    "usingComponents": {
-        "van-tab": "@vant/weapp/tab/index",
-        "van-tabs": "@vant/weapp/tabs/index"
-    }
+    "usingComponents": {},
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "订单列表"
 }

@@ -2,8 +2,25 @@
   <!-- 搜索 -->
   <van-sticky>
     <van-search bind:tap="search"  disabled shape="round" value="{{ value }}" input-align="center" placeholder="请输入搜索关键词" />
-  </van-sticky>
+  <!-- </van-sticky>
+  <van-sticky  offset-top="54"> -->
+     <van-tabs active="{{ active }}">
+       <van-tab title="首页"></van-tab>
+       <van-tab title="优惠"></van-tab>
+       <van-tab title="推荐"></van-tab>
+       <van-tab title="新商品"></van-tab>
+       <!-- <van-tab title="售后"></van-tab> -->
+   </van-tabs>
+   </van-sticky>
   <van-notice-bar left-icon="volume-o" text="{{notice}}" />
+  <view class="distribution">
+      <view class="distribution-item">
+          门店自体
+      </view>
+      <view class="distribution-item">
+          同城速配
+      </view>
+  </view>
   <!-- 轮播图 -->
   <view class='indicator-wrap'>
     <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff" style="width:100%;height:325rpx;">

@@ -1,4 +1,5 @@
 // pages/cart/index.js
+
 Page({
     /**
      * 页面的初始数据
@@ -12,25 +13,36 @@ Page({
     },
 
     setAccount: function () {
-        // console.log(this.data.cartArray)
         let shoppingList = [];
-
         this.data.cartArray.forEach(cart => {
             if (cart.select) {
                 shoppingList.push(cart)
             }
         })
-
         // 总价 + 商品
         const accountInfo = {
-            shoppingList: shoppingList,
+            skuList: shoppingList,
             totalMoney: this.data.totalMoney
         }
-
-        // 跳转
         wx.navigateTo({
-            url: '/pages/order/index?accountInfo=' + JSON.stringify(accountInfo)
+            url: '/pages/accounts/index?accountInfo=' + JSON.stringify(accountInfo) + '&type=cart'
         })
+        // let params = []
+        // shoppingList.forEach(item => {
+        //     params.push({
+        //         skuId: item.skuId,
+        //         count: item.total
+        //     })
+        // })
+        // submitOrder(params).then(res => {
+        //     console.log('submitOrder', res)
+        //     // 跳转
+        //     wx.navigateTo({
+        //         url: '/pages/accounts/index?accountInfo=' + JSON.stringify(res)
+        //     })
+        // })
+
+
     },
     changeIsEditing: function (e) {
         const operation = e.currentTarget.dataset.operation
@@ -53,7 +65,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        if (!wx.getStorageSync('X-Token')) {
+        if (!wx.getStorageSync('sid')) {
             let router = getCurrentPages()[0]
             wx.reLaunch({
                 url: '/pages/login/index?url=' + JSON.stringify(router.route),
@@ -119,6 +131,9 @@ Page({
             key: 'cartInfo',
             data: cartArray
         });
+        this.setData({
+            isEditing: false
+        })
     },
     /**
      * 子组件修改count触发
@@ -139,7 +154,7 @@ Page({
         const index = e.currentTarget.dataset.index;
         const cartArray = this.data.cartArray;
         wx.navigateTo({
-            url: '/pages/detail/index?id=' + cartArray[index].id
+            url: '/pages/detail/index?item=' + JSON.stringify(cartArray[index])
         });
     },
     /**
@@ -304,15 +319,5 @@ Page({
             totalCount: totalCount,
             totalMoney: String(totalMoney.toFixed(2))
         });
-
-        // 设置Tabbar图标
-        // cartArray.length > 0
-        //   ? wx.setTabBarBadge({
-        //       index: 2,
-        //       text: String(cartArray.length)
-        //     })
-        //   : wx.removeTabBarBadge({
-        //       index: 2
-        //     });
     }
 });

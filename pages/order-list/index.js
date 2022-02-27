@@ -1,4 +1,11 @@
 // pages/order-list/index.js
+const {
+    orderList,
+    cancelOrder
+} = require('../../utils/api.js');
+const {
+    regFenToYuan
+} = require("../../utils/util.js");
 Page({
 
     /**
@@ -6,18 +13,7 @@ Page({
      */
     data: {
         active: 1,
-        "cartArray": [{
-            id: "3a4c8b8e4d8c22a97a94b46f58c1f3b9",
-            pic: "/image/classify/phone.png",
-            price: 9999,
-            properties: "颜色:白色;内存:16G;版本:公开版",
-            select: true,
-            skuId: 1788,
-            skuName: "白色 16G 公开版",
-            stocks: 999,
-            title: "荣耀8X Max 7.12英寸90%屏占比珍珠屏 4GB+64GB 魅海蓝 移动联通电信4G全面屏手机 双卡双待",
-            total: 1,
-        }],
+        orderList: []
     },
 
     /**
@@ -27,8 +23,43 @@ Page({
         this.setData({
             active: Number(options.active)
         })
+        this.getList()
     },
+    getList() {
+        orderList().then(res => {
+            console.log(res)
+            res.orderList.forEach(order => {
+                order.totalPrice = regFenToYuan(order.totalPrice)
+                order.skuList.forEach(sku => {
+                    sku.skuPrice = regFenToYuan(sku.skuPrice)
+                    sku.totalPrice = regFenToYuan(sku.totalPrice)
+                });
+                this.setData({
+                    orderList: res.orderList
+                })
+            })
 
+
+        })
+    },
+    pay(e) {
+        console.log(e.currentTarget.dataset.info)
+        wx.navigateTo({
+            url: '/pages/accounts/index?accountInfo=' + JSON.stringify(e.currentTarget.dataset.info) + '&type=order&orderId=' + e.currentTarget.dataset.info.id
+        })
+    },
+    cancel(e) {
+        let params = {
+            id: e.currentTarget.dataset.id
+        }
+        cancelOrder(params).then(res => {
+            console.log(res)
+            // this.setData({
+            //     orderList: res.orderList
+            // })
+            this.getList()
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -61,7 +92,14 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
+        // 请求数据
+        wx.showNavigationBarLoading() //在标题栏中显示加载
+        this.getList()
+        setTimeout(() => {
+            // 隐藏加载状态
+            wx.hideNavigationBarLoading()
+            wx.stopPullDownRefresh();
+        }, 500)
     },
 
     /**

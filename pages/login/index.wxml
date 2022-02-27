@@ -1,16 +1,24 @@
 <!-- pages/login/index.wxml -->
 <view class="login-wrap">
+
     <van-cell-group class="input-group">
         <van-field value="{{ phone }}" bindinput="changeInput" data-type="phone" label="手机号" placeholder="请输入手机号"
             clearable />
-        <van-field value="{{ code }}" bindinput="changeInput" data-type="code" center clearable label="短信验证码"
+        <van-field value="{{  sign }}" bindinput="changeInput" data-type="sign" center clearable label="短信验证码"
             placeholder="请输入验证码" use-button-slot>
             <!-- <van-button slot="button" size="small" type="primary">发送验证码</van-button> -->
             <send-code-btn slot="button" disabled="{{disabled}}" bindsend="getSmsCodeByPhone"></send-code-btn>
         </van-field>
     </van-cell-group>
     <view class="btn">
-        <van-button color="#000" size="large" round bind:click="toLogin">登陆</van-button>
-        <van-button color="#000" plain size="large" round bind:click="toHome">首页</van-button>
+        <van-button color="#000" size="large" plain round bind:click="toLogin">注册/登陆</van-button>
+        <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取头像昵称</button> -->
+        <!-- <van-button color="#000" plain size="large" round bind:click="toHome">首页</van-button> -->
+    </view>
+    <view class="btn" wx:if="{{false}}">
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信一键登录</button>
+        <!-- <van-button color="#000" round size="large" open-type="getPhoneNumber" bind:getphonenumber="getPhoneNumber">
+            微信一键登录
+        </van-button> -->
     </view>
 </view>

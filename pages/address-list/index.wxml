@@ -2,10 +2,10 @@
     <view class="" wx:if="{{addressList.length}}">
         <block wx:for="{{addressList}}" wx:key="index">
             <view class="address-list">
-                <view class="address-left">
+                <view class="address-left"  bind:tap="selectAddress" data-info="{{item}}">
                     <view class="address-name">
-                        <text class="" style="font-size: 28rpx;margin-right: 10rpx;">{{item.name}}</text>
-                        <text class="">{{item.phone}}</text>
+                        <text class="" style="font-size: 28rpx;margin-right: 10rpx;">{{item.userName || '-'}}</text>
+                        <text class="">{{item.mobile}}</text>
                     </view>
                     <view class="address-info">
                         <van-tag wx:if="{{item.default}}" color="#72020a" plain style="margin-right: 10rpx;">默认

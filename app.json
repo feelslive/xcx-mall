@@ -2,16 +2,15 @@
   "pages": [
     "pages/home/index",
     "pages/good-list/index",
-    "pages/category/index",
     "pages/cart/index",
     "pages/me/index",
     "pages/search-list/index",
     "pages/detail/index",
-    "pages/order/index",
     "pages/login/index",
     "pages/address-list/index",
     "pages/address-up/index",
-    "pages/order-list/index"
+    "pages/order-list/index",
+    "pages/accounts/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -29,7 +28,9 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-empty": "@vant/weapp/empty/index",
-    "van-tag": "@vant/weapp/tag/index"
+    "van-tag": "@vant/weapp/tag/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
   },
   "tabBar": {
     "color": "#707070",

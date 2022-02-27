@@ -7,6 +7,7 @@
     /* flex-direction: column; */
     align-items: center;
     padding: 0 40rpx;
+    color: #aaa;
 }
 
 .userinfo button {
@@ -22,7 +23,10 @@
 }
 
 .userinfo-nickname {
-    color: #aaa;
+    font-size: 28rpx;
+}
+.userinfo-mobile {
+    font-size: 24rpx;
 }
 
 .usermotto {

@@ -1,15 +1,18 @@
 // pages/login/index.js
 import {
-    vailPhone,
-    showToast
+    vailPhone
 } from '../../utils/util.js'
-// import api from '../../api/api.js'
+const {
+    login,
+    sendVerifyCode
+} = require('../../utils/api.js');
 const app = getApp()
 
 Page({
     data: {
-        phone: '13235810180',
-        code: '123',
+        phone: '',
+        code: '',
+        sign: '',
         disabled: true,
         url: ''
         // url: '/pages/home/index'
@@ -22,14 +25,8 @@ Page({
         }
 
     },
-    onShow: function () {
-
-    },
-    onHide: function () {
-
-    },
-    onUnload: function () {
-
+    getPhoneNumber(e) {
+        console.log(e.detail.code)
     },
     toHome: function () {
         wx.switchTab({
@@ -42,55 +39,48 @@ Page({
             const {
                 phone,
                 code,
+                sign,
                 url
             } = this.data
-            if (phone === '13235810180' && code === '123') { // 测试数据
-                wx.setStorageSync('X-Token', 'token')
-                wx.setStorageSync('USER_INFO', {
-                    phone: '13235810180'
-                })
-                console.log('url', url)
+            let params = {
+                mobile: phone,
+                sign,
+                code,
+            }
+            login(params).then(res => {
+                console.log('content', res)
+                wx.setStorageSync('sid', res.token)
                 wx.switchTab({
                     url: "/" + url
                 })
-            }
-            /**
-            let param = {
-              userPhone: phone,
-              code,
-              openId: app.globalData.oppenId
-            }
-            wx.showLoading({ title: '稍等', mask: true })
-            api.login(param).then(res => {debugger
-              let d = res.data
-              if (res.code === 'A00000') {
-                wx.hideLoading()
-                wx.setStorageSync('X-Token', res.data.token)
-                wx.setStorageSync(USER_INFO, res.data)
-                wx.redirectTo({
-                  url: '../main/index?activeIndex=0'
-                })
-              } else {
-                wx.hideLoading()
-                showToast(res.msg)
-              }
             })
-            .catch(res => {
-              wx.hideLoading()
-              showToast(res.msg)
-            }) */
         } else {
-            showToast(result.msg)
+            wx.showToast({
+                title: result.msg,
+                icon: 'none',
+            })
         }
     },
     getSmsCodeByPhone: function () {
-        console.log('getSmsCodeByPhone');
-        let param = {
-            phone: this.data.phone
+        let params = {
+            mobile: this.data.phone
         }
-        // api.sendCode(param).then(res => {
-        //   console.log(res)
-        // })
+        // 登录
+        wx.login({
+            success: res => {
+                console.log('wx.login', res)
+                this.setData({
+                    code: res.code
+                })
+            }
+        })
+        sendVerifyCode(params).then(res => {
+            wx.showToast({
+                title: '发送成功',
+                icon: 'success',
+                duration: 2000
+            })
+        })
     },
     changeInput: function (e) {
         let type = e.target.dataset.type
@@ -110,9 +100,9 @@ Page({
                     })
                 }
                 break
-            case 'code':
+            case 'sign':
                 this.setData({
-                    code: e.detail
+                    sign: e.detail
                 })
                 break
         }
@@ -124,11 +114,11 @@ Page({
         }
         const {
             phone,
-            code
+            sign
         } = this.data
         if (!phone.trim()) {
             result.success = false
-            result.msg = '手机号不为空'
+            result.msg = '手机号不能为空'
             return result
         }
         let isPhone = vailPhone(phone)
@@ -137,13 +127,21 @@ Page({
             result.msg = '手机号不正确'
             return result
         } else {
-            if (!code) {
+            if (!sign) {
                 result.success = false
                 result.msg = '验证码不正确'
                 return result
             }
         }
         return result
+    },
+    getUserInfo: function (e) {
+        console.log('e.detail',e.detail)
+        app.globalData.userInfo = e.detail.userInfo
+        this.setData({
+            userInfo: e.detail.userInfo,
+            hasUserInfo: true
+        })
     },
 
 })

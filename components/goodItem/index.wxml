@@ -1,14 +1,14 @@
 <!-- components/goodItem/index.wxml -->
-<view bindtap="switchProlistDetail" data-index="{{index}}" class="img-wrap">
+<view bindtap="toDetail" data-index="{{index}}" class="img-wrap">
   <view class="good-img">
-    <image class="good-image" src="{{goodItem.skuList[0].pic}}"></image>
+    <image class="good-image" src="{{goodInfo.loopImgUrl[0]}}"></image>
   </view>
   <view>
     <view class="good-title">
-      <text class="good-title-text">{{goodItem.title}}</text>
+      <text class="good-title-text">{{goodInfo.title}}</text>
     </view>
     <view class="good-price-cart">
-      <view class="good-price">¥{{goodItem.price}}</view>
+      <view class="good-price">¥{{goodInfo.price}}</view>
       <van-icon catchtap="addCart" name="shopping-cart-o" />
     </view>
   </view>

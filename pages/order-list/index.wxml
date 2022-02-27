@@ -6,24 +6,48 @@
         <van-tab title="待收货"></van-tab>
         <van-tab title="售后"></van-tab>
     </van-tabs>
-    <block wx:key="index" wx:for='{{cartArray}}'>
-        <view class="good_list" bindtap='switchGoodDetail' data-index="{{index}}">
-            <view class='content'>
-                <view class='goods'>
-                    <image class='good_img' src='{{item.pic}}'></image>
-                    <view class='good_info'>
-                        <view class='good_title'>
-                            <text>{{item.title}}</text>
+    <van-empty wx:if='{{cartArray.length == 0}}' description="购物车空空如也，去逛逛吧" />
+    <view wx:else>
+        <block wx:key="index" wx:for='{{orderList}}' wx:for-item="order">
+            <view class="good_list" data-index="{{index}}">
+                <view class='content'>
+                    <block wx:key="index" wx:for='{{order.skuList}}'>
+                        <view class='goods' bind:tap="pay" data-info="{{order}}">
+                            <image class='good_img' src='{{item.skuImg}}'></image>
+                            <view class='good_info'>
+                                <view class='good_title'>
+                                    <text>{{item.skuTitle}}</text>
+                                </view>
+                                <van-tag plain type="primary">{{item.skuName}}</van-tag>
+                                <view class='good_price'>
+                                    <text class='price'>¥{{item.skuPrice}}</text>
+                                    <!-- 商品数量 -->
+                                    <text class='price'>X{{item.totalCount}}</text>
+                                </view>
+                            </view>
                         </view>
-                        <van-tag plain type="primary">{{item.skuName}}</van-tag>
-                        <view class='good_price'>
-                            <text class='price'>¥{{item.price}}</text>
-                            <!-- 商品数量 -->
-                            <text class='price'>X{{item.total}}</text>
+                    </block>
+                    <view class="order-status">
+                        <view class="order-status-text" wx:if="{{order.status === 1}}">待支付</view>
+                        <view class="order-status-text" wx:if="{{order.status === 2}}">待发货</view>
+                        <view class="order-status-text" wx:if="{{order.status === 3}}">待收货</view>
+                        <view class="order-status-text" wx:if="{{order.status === 4}}">已完成</view>
+                        <view class="order-status-text" wx:if="{{order.status === 5}}">已取消</view>
+                        <view>
+                            <van-button wx:if="{{order.status === 1}}" color="#72020a" round size="small" plain
+                                bind:click="pay" data-info="{{order}}" style="margin-right: 10rpx;">
+                                去支付
+                            </van-button>
+                            <van-button wx:if="{{order.status === 1}}" color="#707070" round size="small" plain
+                                bind:click="cancel" data-id="{{order.id}}">
+                                取消订单
+                            </van-button>
                         </view>
+
                     </view>
                 </view>
+
             </view>
-        </view>
-    </block>
+        </block>
+    </view>
 </view>

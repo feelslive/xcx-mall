@@ -6,14 +6,14 @@
         input-align="right" />
 
     <van-cell title="城市" value="{{city}}" data-type="city" is-link bind:click="showPopup" />
-    <van-field label="详细地址" value="{{  address }}" data-type="address" type="textarea" placeholder="请输入详细地址" autosize
+    <van-field label="详细地址" value="{{  address }}" data-type="address" type="textarea" placeholder="请输入详细地址" autosize  bind:change="onChange"
         input-align="right" />
     <van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 40%">
         <van-area area-list="{{ areaList }}" bind:change="changeCity" bind:confirm="confirmCity"
             bind:cancel="onClose" />
     </van-popup>
     <view class="defaultAddress">
-        <van-checkbox value="{{ checked }}" bind:change="onChangDefault">设为默认地址</van-checkbox>
+        <van-checkbox value="{{  checked }}" bind:change="onChangDefault">设为默认地址</van-checkbox>
     </view>
     <view class="add-address-btn">
         <van-button color="#000" round block bind:click="save">保存</van-button>

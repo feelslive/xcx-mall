@@ -1,5 +1,8 @@
 // pages/me/index.js
 //获取应用实例
+const {
+    userInfo,
+} = require('../../utils/api.js');
 const app = getApp()
 
 Page({
@@ -8,6 +11,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        info: {},
         userInfo: {},
         phone: '',
         hasUserInfo: false,
@@ -47,17 +51,27 @@ Page({
 
     },
     onShow: function (options) {
-        if (!wx.getStorageSync('X-Token')) {
+        if (!wx.getStorageSync('sid')) {
             let router = getCurrentPages()[0]
             wx.reLaunch({
                 url: '/pages/login/index?url=' + JSON.stringify(router.route),
             })
-        } else {
-            let info = wx.getStorageSync('USER_INFO')
-            this.setData({
-                phone: info.phone
-            })
         }
+        // else {
+        //     let info = wx.getStorageSync('USER_INFO')
+        //     this.setData({
+        //         phone: info.phone
+        //     })
+        // }
+        userInfo().then(res => {
+            console.log('userInfo', res)
+            // this.setData({
+            //     info: res
+            // })
+            this.setData({
+                info: res
+            })
+        })
     },
     getUserInfo: function (e) {
         // wx.navigateTo({
@@ -81,8 +95,7 @@ Page({
         })
     },
     exit() {
-        wx.removeStorageSync('X-Token')
-        wx.removeStorageSync('USER_INFO')
+        wx.removeStorageSync('sid')
         wx.switchTab({
             url: '/pages/home/index',
         })

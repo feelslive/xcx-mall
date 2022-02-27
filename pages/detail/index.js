@@ -1,41 +1,17 @@
 // pages/detail/index.js
-// 引入接口配置文件urlconfig
-const interfaces = require('../../utils/urlconfig.js');
-
+const {
+    regFenToYuan
+} = require("../../utils/util.js");
+const {
+    goodsDetail
+} = require('../../utils/api.js');
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        "partData": {
-            "id": "3a4c8b8e4d8c22a97a94b46f58c1f3b9",
-            "loopImgUrl": [
-                "/image/classify/phone.png",
-                "/image/classify/miphone.png",
-                "/image/classify/huawei.png"
-            ],
-            "title": "荣耀8X Max 7.12英寸90%屏占比珍珠屏 4GB+64GB 魅海蓝 移动联通电信4G全面屏手机 双卡双待",
-            "price": "1499.00",
-            "count": 1,
-            skuList: [{
-                    pic: '/image/classify/phone.png',
-                    price: 9999,
-                    properties: "颜色:白色;内存:16G;版本:公开版",
-                    skuId: 1788,
-                    skuName: "白色 16G 公开版",
-                    stocks: 999
-                },
-                {
-                    pic: '/image/classify/miphone.png',
-                    price: 9999,
-                    properties: "颜色:红色;内存:64G;版本:绑定版",
-                    skuId: 17889,
-                    skuName: "红色 64G 绑定版",
-                    stocks: 56
-                }
-            ],
-        },
+        partData: {},
         total: 1,
         hideBuy: false, // 是否购买的遮罩
         badgeCount: 0,
@@ -49,36 +25,35 @@ Page({
         selectedPropObj: {},
         propKeys: [],
         allProperties: [],
+        selectType: "1"
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log('options', options);
-        // options = JSON.parse(options.item)
-        // const id = options.id
-        const id = "3a4c8b8e4d8c22a97a94b46f58c1f3b9"
-        const self = this
-        // 发送接口请求
-        // wx.showLoading({
-        //     title: '加载中...',
-        // })
-        // wx.request({
-        //     url: interfaces.productionDetail,
-        //     success(res) {
-        //         let result = null
-        //         res.data.forEach(data => {
-        //             if (data.partData.id == id)
-        //                 result = data
-        //         })
-
-        //         self.setData({
-        //             partData: result.partData,
-        //         })
-        //         wx.hideLoading()
-        //     }
-        // })
+        let info = JSON.parse(options.item)
+        console.log('options', info.id);
+        this.setData({
+            goodId: info.id
+        })
+        this.getDetail()
+    },
+    getDetail() {
+        let params = {
+            id: this.data.goodId
+        }
+        goodsDetail(params).then(res => {
+            console.log('goodsDetail', res)
+            res.price = regFenToYuan(res.price)
+            res.skuList.forEach(sku => {
+                sku.skuPrice = regFenToYuan(sku.price)
+            })
+            this.setData({
+                partData: res
+            })
+            this.groupSkuProp()
+        })
     },
 
     /**
@@ -100,14 +75,16 @@ Page({
                 self.setBadge(cartArray)
             },
         })
-        this.groupSkuProp()
+
     },
     /**
      * 显示商品弹框
      */
-    popBuyView: function () {
+    popBuyView: function (e) {
+        // console.log('e',)
         this.setData({
-            hideBuy: true
+            hideBuy: true,
+            selectType: e.currentTarget.dataset.type || "1"
         })
     },
     hideBuyView: function (e) { // 隐藏商品弹框
@@ -116,10 +93,36 @@ Page({
         })
 
     },
+    selectAddress() {
+        wx.navigateTo({
+            url: '/pages/address-list/index'
+        })
+    },
+    buyNow() {
+        if (!this.data.findSku) {
+            return false
+        }
+        let accountInfo = {
+            skuList: [],
+            totalMoney: this.data.defaultSku.price
+        }
+        accountInfo.skuList.push({
+            ...this.data.defaultSku,
+            total: this.data.total
+        })
+        wx.navigateTo({
+            url: '/pages/accounts/index?accountInfo=' + JSON.stringify(accountInfo) + '&type=buy'
+        })
+        console.log('self.data.total', this.data.total)
+        console.log('self.data.defaultSku', this.data.defaultSku)
+    },
     /**
      * 加入购物车
      */
     addCart() {
+        if (!this.data.findSku) {
+            return false
+        }
         var self = this
         wx.getStorage({
             key: 'cartInfo',
@@ -165,6 +168,7 @@ Page({
             icon: 'success',
             duration: 3000
         })
+        this.hideBuyView()
     },
     /**
      * 设置购物车图标
@@ -189,7 +193,7 @@ Page({
         var skuList = this.data.partData.skuList;
 
         //当后台返回只有一个SKU时，且SKU属性值为空时，即该商品没有规格选项，该SKU直接作为默认选中SKU
-        if (skuList.length == 1 && skuList[0].properties == "") {
+        if (skuList.length === 1 && skuList[0].properties === "") {
             this.setData({
                 defaultSku: skuList[0]
             });
@@ -212,8 +216,7 @@ Page({
                     defaultSku: defaultSku
                 });
             }
-
-            var properties = skuList[i].properties; //如：版本:公开版;颜色:金色;内存:64GB
+            var properties = skuList[i].properties.slice(0, skuList[i].properties.length - 1); //如：版本:公开版;颜色:金色;内存:64GB
             allProperties.push(properties);
             var propList = properties.split(";"); // 如：["版本:公开版","颜色:金色","内存:64GB"]
 
@@ -283,10 +286,14 @@ Page({
                 break;
             }
         }
+        console.log('findSku = true', this.data.defaultSku)
+        if (this.data.defaultSku && !this.data.defaultSku.stocks) {
+            findSku = false
+        }
         this.setData({
             findSku: findSku
         });
-        console.log('findSku', this.data.findSku)
+        // console.log('defaultSku', this.data.defaultSku.stocks)
     },
     equalsIgnoreOrder: function (a, b) {
         if (a.length !== b.length) return false
@@ -339,5 +346,15 @@ Page({
                 total: e.detail
             })
         }
+    },
+    onPullDownRefresh: function () {
+        // 请求数据
+        wx.showNavigationBarLoading() //在标题栏中显示加载
+        this.getDetail()
+        setTimeout(() => {
+            // 隐藏加载状态
+            wx.hideNavigationBarLoading()
+            wx.stopPullDownRefresh();
+        }, 500)
     },
 })

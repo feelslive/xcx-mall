@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "商品列表",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "van-notice-bar": "@vant/weapp/notice-bar/index",
     "goodItem": "/components/goodItem/index"

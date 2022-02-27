@@ -1,12 +1,13 @@
 <view class='container'>
     <view class='userinfo'>
-        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称
-        </button>
-        <block wx:else>
-            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-            <text class="userinfo-nickname">{{phone}}</text>
-        </block>
+        <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称
+        </button> -->
+        <image class="userinfo-avatar" src="{{info.headerImg?info.headerImg: '../../image/def_header.png'}}"
+            mode="cover"></image>
+        <view class="">
+            <view class="userinfo-nickname">{{info.name}}</view>
+            <view class="userinfo-mobile">{{info.mobile}}</view>
+        </view>
     </view>
     <view class="cell-item">
         <van-cell title="收货地址管理" is-link value="" bind:click="upAddress" />
@@ -20,28 +21,28 @@
                 </view>
                 <view>全部订单</view>
             </view>
-            <view class="order-item" bindtap="toOrderList"  data-active="1">
+            <view class="order-item" bindtap="toOrderList" data-active="1">
                 <!-- <van-tag class="order-danger" round type="danger">9</van-tag> -->
                 <view>
                     <van-icon size="22px" name="after-sale" />
                 </view>
                 <view>待付款</view>
             </view>
-            <view class="order-item" bindtap="toOrderList"  data-active="2">
+            <view class="order-item" bindtap="toOrderList" data-active="2">
                 <!-- <van-tag class="order-danger" round type="danger">9</van-tag> -->
                 <view>
                     <van-icon size="22px" name="logistics" />
                 </view>
                 <view>待发货</view>
             </view>
-            <view class="order-item" bindtap="toOrderList"  data-active="3">
+            <view class="order-item" bindtap="toOrderList" data-active="3">
                 <!-- <van-tag class="order-danger" round type="danger">9</van-tag> -->
                 <view>
                     <van-icon size="22px" name="send-gift-o" />
                 </view>
                 <view>待收货</view>
             </view>
-            <view class="order-item" bindtap="toOrderList"  data-active="4">
+            <view class="order-item" bindtap="toOrderList" data-active="4">
                 <view>
                     <van-icon size="22px" name="cash-back-record" />
                 </view>
@@ -49,9 +50,9 @@
             </view>
         </view>
     </view>
-    <view class="cell-item">
+    <!-- <view class="cell-item">
         <van-cell title="客服中心" is-link value="" bind:click="upAddress" />
-    </view>
+    </view> -->
     <view class="cell-item">
         <van-cell title="账号注销" is-link value="" bind:click="exit" />
     </view>

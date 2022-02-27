@@ -20,3 +20,22 @@
 .goods-panel .good-item:nth-child(2n+1) {
   /* margin-right: 22rpx; */
 }
+
+.distribution {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30rpx;
+    margin: 20rpx 0;
+}
+.distribution-item {
+    width: 46%;
+    height: 120rpx;
+    line-height: 120rpx;
+    text-align: center;
+    font-size: 28rpx;
+    border-radius: 4rpx;
+    border: 2rpx solid #72020a;
+}
+.distribution-item:active {
+    background-color: #f7f7f7;
+}

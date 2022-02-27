@@ -9,4 +9,6 @@ page {
   flex-direction: column;
   box-sizing: border-box;
 } 
-
+.van-tabs__line {
+    background-color: #72020a !important;
+}

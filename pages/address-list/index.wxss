@@ -1,6 +1,6 @@
 /* pages/address-list/index.wxss */
 .address {
-    padding: 30rpx;
+    padding: 30rpx 30rpx 200rpx 30rpx;
 }
 .address-list {
     padding: 30rpx;
