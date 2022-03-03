@@ -30,7 +30,8 @@ Page({
             this.setData({
                 swiperList: res.swiperList,
                 goodList: res.goodList,
-                notice: res.notice
+                notice: res.notice,
+                responseList: res.goodsCategoryDetailResponseList
             })
         })
     },

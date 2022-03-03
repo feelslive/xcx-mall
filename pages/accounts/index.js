@@ -45,7 +45,7 @@ Page({
         this.setData({
             orderType: options.type
         })
-        if (options.type === 'cart' || options.type === 'buy') {
+        if (options.type === 'cart') {
             // price: 9999
             // properties: "颜色:白色;内存:64G;版本:公开版"
             // select: true
@@ -71,14 +71,20 @@ Page({
                 accountInfo: accountInfo,
             })
         }
-        // if (options.type === 'buy') {
-        //     accountInfo.totalPrice = accountInfo.totalMoney
-        //     accountInfo.skuList.forEach(sku => {
-        //         sku.skuPrice = sku.price
-        //         sku.totalPrice = sku.totalPrice
-        //         sku.skuTitle = sku.title
-        //     });
-        // }
+        if (options.type === 'buy') {
+            accountInfo.totalPrice = 0
+            accountInfo.skuList.forEach(sku => {
+                sku.skuPrice = sku.price
+                sku.totalPrice = sku.totalPrice
+                sku.skuTitle = sku.title
+                sku.totalCount = sku.total
+                accountInfo.totalPrice += Number(sku.price) * sku.total
+            });
+            // accountInfo.totalPrice = regFenToYuan(accountInfo.totalPrice)
+            this.setData({
+                accountInfo: accountInfo,
+            })
+        }
 
 
         // if (options.orderDetail === 'true') {

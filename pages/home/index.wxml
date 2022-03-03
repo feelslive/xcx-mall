@@ -4,12 +4,12 @@
     <van-search bind:tap="search" disabled shape="round" value="{{ value }}" input-align="center" placeholder="请输入搜索关键词" />
     <!-- </van-sticky>
   <van-sticky  offset-top="54"> -->
-    <van-tabs active="{{ active }}">
-      <van-tab title="品质鲜果"></van-tab>
-      <van-tab title="精选肉禽"></van-tab>
+    <van-tabs active="{{ active -1 }}">
+      <van-tab title="{{item.name}}" wx:for="{{responseList}}"></van-tab>
+      <!-- <van-tab title="精选肉禽"></van-tab>
       <van-tab title="干货菌类"></van-tab>
       <van-tab title="粮品调料"></van-tab>
-      <van-tab title="其他优品"></van-tab>
+      <van-tab title="其他优品"></van-tab> -->
     </van-tabs>
   </van-sticky>
   <view class="notice">
@@ -34,7 +34,7 @@
     </view>
   </view>
   <!-- 商品列表 -->
-  <view class="goods-panel">
-    <goodItem class="good-item" wx:for="{{goodList}}" wx:key="index" goodItem="{{item}}"></goodItem>
+  <view class="goods-panel"  wx:for="{{responseList}}" wx:key="index">
+    <goodItem class="good-item" wx:for="{{item.goodList}}" wx:for-item="good" wx:key="index" goodItem="{{good}}"></goodItem>
   </view>
 </view>

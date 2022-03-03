@@ -110,7 +110,7 @@
     </view>
     <view class="">
         <block wx:key="index" wx:for="{{partData.detailImgUrl}}">
-            <image style="width:100%;" class="detail-img" src="{{item}}" />
+            <image style="width:100%;"  mode="widthFix" class="detail-img" src="{{item}}" />
         </block>
     </view>
 </view>

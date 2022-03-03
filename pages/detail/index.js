@@ -47,6 +47,7 @@ Page({
             console.log('goodsDetail', res)
             res.price = regFenToYuan(res.price)
             res.skuList.forEach(sku => {
+                sku.price = regFenToYuan(sku.price)
                 sku.skuPrice = regFenToYuan(sku.price)
             })
             this.setData({
@@ -268,7 +269,7 @@ Page({
             selectedProp.push(selectedPropObj[key]);
             selectedProperties += key + ":" + selectedPropObj[key] + ";";
         }
-        selectedProperties = selectedProperties.substring(0, selectedProperties.length - 1);
+        // selectedProperties = selectedProperties.substring(0, selectedProperties.length - 1);
         this.setData({
             selectedProp: selectedProp
         });
@@ -278,6 +279,8 @@ Page({
             var propList = selectedProperties.split(";");
             var skuPropList = this.data.partData.skuList[i].properties.split(";");
             // if (this.data.partData.skuList[i].properties === selectedProperties) {
+            console.log('propList',propList)
+            console.log('skuPropList',skuPropList)
             if (this.equalsIgnoreOrder(propList, skuPropList)) {
                 // TODO:
                 // this.data.partData.skuList[i].skuId
