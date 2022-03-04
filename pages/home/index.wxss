@@ -1,5 +1,6 @@
 page {
     background-color: #fff;
+    height:100%;
 }
 .indicator-wrap,
 .notice {
@@ -20,6 +21,7 @@ page {
 }
 
 .goods-panel {
+  /* height:100vh; */
   display: flex;
   flex-wrap: wrap;
   padding: 0 30rpx;
@@ -40,14 +42,44 @@ page {
 .distribution-item {
     width: 46%;
     height: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     line-height: 80rpx;
     text-align: center;
     font-size: 28rpx;
     color: #72020a;
     border-radius: 40rpx;
     background-color: #f7f7f7;
-    /* border: 2rpx solid #72020a; */
 }
 .distribution-item:active {
     background-color: #f7f7f7;
+}
+.distribution-item image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 4rpx;
+}
+.tips {
+  display: flex;
+  color: #aaa;
+  padding: 8rpx 0;
+  margin: 0 30rpx 10rpx;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #f7f7f7;
+}
+.tips-item {
+  font-size:24rpx;
+  display: flex;
+  align-items: center;
+ 
+}
+.tips-item image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 4rpx;
+}
+.line {
+  font-size: 24rpx;
 }

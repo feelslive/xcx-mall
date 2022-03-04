@@ -2,39 +2,61 @@
   <!-- 搜索 -->
   <van-sticky>
     <van-search bind:tap="search" disabled shape="round" value="{{ value }}" input-align="center" placeholder="请输入搜索关键词" />
-    <!-- </van-sticky>
-  <van-sticky  offset-top="54"> -->
-    <van-tabs active="{{ active -1 }}">
-      <van-tab title="{{item.name}}" wx:for="{{responseList}}"></van-tab>
-      <!-- <van-tab title="精选肉禽"></van-tab>
-      <van-tab title="干货菌类"></van-tab>
-      <van-tab title="粮品调料"></van-tab>
-      <van-tab title="其他优品"></van-tab> -->
+    <van-tabs active="{{ active }}" id="tabs" bind:change="changeTab" data-active="{{active}}">
+      <van-tab title="{{item.name}}" wx:for="{{responseList}}" wx:key="index"></van-tab>
     </van-tabs>
   </van-sticky>
-  <view class="notice">
-    <van-notice-bar left-icon="volume-o" text="{{notice}}" />
-  </view>
-  <!-- 轮播图 -->
-  <view class='indicator-wrap'>
-    <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff" style="width:100%;height:440rpx;">
-      <block wx:key="index" wx:for-items="{{swiperList}}">
-        <swiper-item>
-          <image class="swiper-item" src="{{item.image}}" mode="aspectFill" />
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-  <view class="distribution">
-    <view class="distribution-item">
-      <view>新商品</view>
+  <scroll-view class="box" bindscroll="scroll" style="height:{{winHeight}}" scroll-into-view="{{toView}}" scroll-y="true" scroll-with-animation="true">
+    <view class="notice">
+      <van-notice-bar left-icon="volume-o" text="{{notice}}" />
     </view>
-    <view class="distribution-item">
-      <view>限时购</view>
+    <!-- 轮播图 -->
+    <view class='indicator-wrap'>
+      <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff" style="width:100%;height:440rpx;">
+        <block wx:key="index" wx:for-items="{{swiperList}}">
+          <swiper-item>
+            <image class="swiper-item" src="{{item.image}}" mode="aspectFill" />
+          </swiper-item>
+        </block>
+      </swiper>
     </view>
-  </view>
-  <!-- 商品列表 -->
-  <view class="goods-panel"  wx:for="{{responseList}}" wx:key="index">
-    <goodItem class="good-item" wx:for="{{item.goodList}}" wx:for-item="good" wx:key="index" goodItem="{{good}}"></goodItem>
-  </view>
+    <view class="distribution">
+      <view class="distribution-item" bind:tap="toList" data-type="1">
+        <image src="../../image/home2.png" />
+        <view>新商品</view>
+      </view>
+      <view class="distribution-item" bind:tap="toList" data-type="2">
+        <image src="../../image/home1.png" />
+        <view>限时购</view>
+      </view>
+    </view>
+    <view class="tips">
+      <view class="tips-item">
+        <image src="../../image/home3.png" />
+        <view>原产直销</view>
+      </view>
+      <view class="line">|</view>
+      <view class="tips-item">
+        <image src="../../image/home4.png" />
+        <view>有机绿色</view>
+      </view>
+      <view class="line">|</view>
+      <view class="tips-item">
+        <image src="../../image/home5.png" />
+        <view>平价准达</view>
+      </view>
+      <view class="line">|</view>
+      <view class="tips-item">
+        <image src="../../image/home6.png" />
+        <view>无忧售后</view>
+      </view>
+    </view>
+    <!-- 商品列表 -->
+    <!-- <view id="productBox">商品图</view>
+  <view id="commentBox">评论部分</view>
+  <view id="infoBox">详情部分</view> -->
+    <view class="goods-panel" wx:for="{{responseList}}" id="{{'good'+ index}}">
+      <goodItem class="good-item" wx:for="{{item.goodList}}" wx:for-item="good" wx:key="index" goodItem="{{good}}"></goodItem>
+    </view>
+  </scroll-view>
 </view>
